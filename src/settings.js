@@ -1,4 +1,5 @@
-export const loginUrl = "https://test.singah.dk/devops-starter/api/login";
+export const loginUrl =
+  "http://localhost:8080/SP_back_end_war_exploded/api/login";
 // http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/random
 // remember to replace vodka with a variable http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/ingridient/vodka
 // remember to replace margarita with a variable http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/name/margarita
