@@ -1,5 +1,5 @@
 import React from "react";
-// change the path here to the logo
+// add the logo to the images folder and change the path here to the logo here
 import img from "../images/glass.jpg";
 
 const Header = () => {

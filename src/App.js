@@ -5,6 +5,7 @@ import "./styles/form.css";
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
+import Categories from "./components/Categories";
 import LogOut from "./components/LogOut";
 import { loginUrl } from "./settings";
 
@@ -12,6 +13,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [categories, setCategories] = useState(false);
 
   //set favicon
   var link = document.createElement("link");
@@ -80,6 +82,9 @@ function App() {
         </nav>
       )}
       <Outlet /> */}
+
+      {/* this is the showhide for the category options */}
+      {categories && <Categories />}
 
       {!loggedIn && <LogIn onAdd={logInFunc} />}
 
