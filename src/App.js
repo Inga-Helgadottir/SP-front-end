@@ -1,7 +1,7 @@
 import Header from "./components/Header";
 import LogIn from "./components/LogIn";
 import "./styles/App.css";
-import "./styles/form.css";
+import img from "../images/logo.png";
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
