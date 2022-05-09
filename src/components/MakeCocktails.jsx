@@ -19,8 +19,13 @@ const MakeCocktails = ({ onAdd }) => {
   const [instructions, setInstructions] = useState("");
   const [image, setImage] = useState("");
   const [imageAlt, setImageAlt] = useState("");
-  const [measurementIngredients, setMeasurementIngredients] = useState([]);
-  const [measurementIngredient, setMeasurementIngredient] = useState([]);
+  const [measurementsIngredients, setMeasurementsIngredients] = useState([{}]);
+  // const [measurementsIngredients, setMeasurementsIngredients] = useState([
+  //   {
+  //     id: 0,
+  //     measurementIngredient: "testing now",
+  //   },
+  // ]);
   const [imageOptions, setImageOptions] = useState([
     beerGlass,
     cocktailGlass,
@@ -33,8 +38,28 @@ const MakeCocktails = ({ onAdd }) => {
     wineGlass,
   ]);
 
+  const updateMI = () => {
+    let measurementIngredientsArray = document.querySelectorAll(".miInput");
+    measurementIngredientsArray.forEach((element) => {
+      console.log("element.value");
+      console.log(element.value);
+      setMeasurementsIngredients([
+        ...measurementsIngredients,
+        {
+          id: measurementIngredientsArray.length,
+          measurementIngredient: element.value,
+        },
+      ]);
+      console.log("measurementIngredients");
+      console.log(measurementsIngredients);
+      console.log("measurementsIngredients.length");
+      console.log(measurementsIngredients.length);
+    });
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
+    updateMI();
     if (!name) {
       alert("Please enter a name");
       return;
@@ -55,13 +80,15 @@ const MakeCocktails = ({ onAdd }) => {
       alert("Please choose an image for this cocktail");
       return;
     }
-    if (measurementIngredients.length < 1) {
-      alert("Please give a list of ingredients");
-      return;
-    }
+    // if (measurementsIngredients.length === 1) {
+    //   alert("Please give a list of ingredients");
+    //   return;
+    // }
 
-    console.log(measurementIngredients);
-    console.log(measurementIngredients);
+    console.log("measurementIngredients");
+    console.log(measurementsIngredients);
+    console.log("measurementIngredients.length");
+    console.log(measurementsIngredients.length);
 
     onAdd({
       name,
@@ -70,7 +97,7 @@ const MakeCocktails = ({ onAdd }) => {
       instructions,
       image,
       imageAlt,
-      measurementIngredients,
+      measurementsIngredients,
     });
 
     setName("");
@@ -79,7 +106,7 @@ const MakeCocktails = ({ onAdd }) => {
     setInstructions("");
     setImage("");
     setImageAlt("");
-    setMeasurementIngredients([]);
+    setMeasurementsIngredients([]);
     // alert("You have made a cocktail");
   };
 
@@ -148,19 +175,54 @@ const MakeCocktails = ({ onAdd }) => {
         <div className="form-control">
           <label>What ingredients are needed to make your drink?</label>
           {inputList.map((singleInput, index) => {
+            console.log("index");
+            console.log(index);
             return (
               <input
+                className="miInput"
                 key={index}
                 type="text"
                 placeholder="1/2 shot Vodka"
-                // value={measurementIngredients[index]}
-                // value={measurementIngredients}
-                // value={this.value}
+                // value={measurementsIngredients[index]}
+                // value={measurementsIngredients}
+                // value={this}
                 onChange={(e) => {
-                  setMeasurementIngredients([
-                    ...measurementIngredients,
-                    e.target.value,
-                  ]);
+                  // console.log("measurementIngredients");
+                  // console.log(measurementsIngredients[index]);
+                  // measurementsIngredients.map((measurementIngredient, id) => {
+                  //   console.log("herere");
+                  //   console.log(measurementIngredient);
+                  //   console.log(id);
+                  //   console.log(index);
+                  // });
+                  // console.log("!!!!!!!!!!!!!!");
+                  // console.log(
+                  //   measurementsIngredients.find((element) => element.id === 1)
+                  // );
+                  // if (
+                  //   measurementsIngredients.find(
+                  //     (element) => element.id === 1
+                  //   ) === undefined &&
+                  //   index === 0
+                  // ) {
+                  //   console.log("nhjkhjhjkhjkhjk");
+                  //   setMeasurementsIngredients([
+                  //     {
+                  //       id: measurementsIngredients.length,
+                  //       measurementIngredients: e.target.value,
+                  //     },
+                  //   ]);
+                  // }
+                  console.log("measurementsIngredients");
+                  console.log(measurementsIngredients);
+                  //if index === id override
+                  // setMeasurementsIngredients([
+                  //   ...measurementsIngredients,
+                  //   {
+                  //     id: measurementsIngredients.length,
+                  //     measurementIngredients: e.target.value,
+                  //   },
+                  // ]);
                 }}
               ></input>
             );
