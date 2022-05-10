@@ -1,12 +1,13 @@
 import Header from "./components/Header";
 import LogIn from "./components/LogIn";
 import "./styles/App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import Categories from "./components/Categories";
 import LogOut from "./components/LogOut";
 import { loginUrl } from "./settings";
+import { Cocktails } from "./components/Cocktails";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -69,9 +70,10 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Cocktails />
+      {/* <Header /> */}
 
-      {loggedIn && <WelcomePage name={userName} role={userRole} />}
+      {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
 
       {/* {loggedIn && (
         <nav className="borderNoTop">
@@ -83,11 +85,11 @@ function App() {
       <Outlet /> */}
 
       {/* this is the showhide for the category options */}
-      {categories && <Categories />}
+      {/* {categories && <Categories />} */}
 
-      {!loggedIn && <LogIn onAdd={logInFunc} />}
+      {/* {!loggedIn && <LogIn onAdd={logInFunc} />} */}
 
-      {loggedIn && <LogOut onClick={logOutFunc} />}
+      {/* {loggedIn && <LogOut onClick={logOutFunc} />} */}
     </div>
   );
 }
