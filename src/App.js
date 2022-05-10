@@ -79,10 +79,6 @@ function App() {
     });
 
     const data = await res.json();
-    console.log(data);
-    // if (data.code !== null && data.code !== "" && data.code !== undefined) {
-    //   alert(data.message);
-    // }
   };
 
   return (
