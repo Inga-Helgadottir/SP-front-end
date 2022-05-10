@@ -62,6 +62,9 @@ const MakeCocktails = ({ onAdd }) => {
     setInstructions("");
     setImage("");
     setImageAlt("");
+    document.querySelectorAll(".miInput").forEach((element) => {
+      element.style.border = "solid 0.5px black";
+    });
     alert("You have made a cocktail");
   };
 
@@ -143,9 +146,6 @@ const MakeCocktails = ({ onAdd }) => {
                 key={index}
                 type="text"
                 placeholder="1/2 shot Vodka"
-                // onChange={(e) => {
-
-                // }}
               ></input>
             );
           })}
