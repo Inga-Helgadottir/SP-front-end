@@ -70,19 +70,18 @@ function App() {
 
   return (
     <div className="App">
-      <Cocktails />
+      {/* <Cocktails /> */}
       {/* <Header /> */}
 
       {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
 
-      {/* {loggedIn && (
-        <nav className="borderNoTop">
-          <Link to="/">Home</Link>
-          <Link to="/pokemons">Pokemons</Link>
-          <Link to="/swapi">Star wars</Link>
-        </nav>
-      )}
-      <Outlet /> */}
+      <nav className="borderNoTop">
+        {/* <Link to="/">Home</Link> */}
+        {/* <Link to="/seeCocktail/:id">this one</Link> */}
+        <Link to="/seeCocktails">other</Link>
+        {/* <Link to="/swapi">Star wars</Link> */}
+      </nav>
+      <Outlet />
 
       {/* this is the showhide for the category options */}
       {/* {categories && <Categories />} */}
