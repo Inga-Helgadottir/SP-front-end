@@ -4,6 +4,8 @@ export const cocktalLetterUrl =
   "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/letter/";
 export const allCocktailsDB =
   "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/all";
+export const makeCocktailUrl =
+  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/add";
 // remember to replace 11007 with a variable http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/API/11007
 // http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/random
 // remember to replace vodka with a variable http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/ingridient/vodka
