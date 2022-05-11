@@ -26,16 +26,12 @@ export const Cocktails = () => {
   const getCocktailList = async (letter) => {
     const res = await fetch(cocktalLetterUrl + letter);
     const data = await res.json();
-    console.log("data from fetch");
-    console.log(data.drinks);
     return data.drinks;
   };
 
   const getCocktailListDB = async () => {
     const res = await fetch(allCocktailsDB);
     const data = await res.json();
-    console.log("data from fetch DB------------------------");
-    console.log(data);
     return data;
   };
 

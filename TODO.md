@@ -5,9 +5,7 @@ change jsx and css for header, welcomePage, cocktail, cocktails, cocktailRecipe,
 
 
 11/05
-outsourcing
-coding standards
+fix endpoint our db (seeAll, seeId)
 alcohol units
 au front-end
 ask m for bg img
-ask j if cocktail recipe

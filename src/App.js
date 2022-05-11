@@ -84,7 +84,7 @@ function App() {
 
   return (
     <div className="App">
-      <MakeCocktail onAdd={makeCocktailFunc} />
+      {/* <MakeCocktail onAdd={makeCocktailFunc} /> */}
       {/* <Header /> */}
 
       {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
@@ -92,7 +92,8 @@ function App() {
       <nav className="borderNoTop">
         {/* <Link to="/">Home</Link> */}
         {/* <Link to="/seeCocktail/:id">this one</Link> */}
-        <Link to="/seeCocktails">other</Link>
+        <Link to="/seeCocktails">see all cocktails</Link>
+        <Link to="/alcoholUnits">calculate alcohol units</Link>
         {/* <Link to="/swapi">Star wars</Link> */}
       </nav>
       <Outlet />

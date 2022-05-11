@@ -2,14 +2,12 @@ import React from "react";
 import "../styles/makeCocktails.css";
 import { useState } from "react";
 import beerGlass from "../images/beerGlass.png";
-import cocktailGlass from "../images/cocktailGlass.png";
-import cocktailGlass2 from "../images/cocktailGlass2.jpg";
+import cocktailGlass from "../images/cocktailGlass.jpg";
+import cocktailGlass2 from "../images/cocktailGlass2.png";
 import martiniGlass from "../images/martiniGlass.jpg";
-import normalGlass from "../images/normalGlass.png";
+import normalGlass from "../images/normalGlass.jpg";
 import normalShortGlass from "../images/normalShortGlass.jpg";
-import shortGlass from "../images/shortGlass.png";
 import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
-import wineGlass from "../images/wineGlass.jpg";
 
 const MakeCocktails = ({ onAdd }) => {
   const [inputList, setInputList] = useState([{ service: "" }]);
@@ -27,9 +25,7 @@ const MakeCocktails = ({ onAdd }) => {
     martiniGlass,
     normalGlass,
     normalShortGlass,
-    shortGlass,
     tallSkinnyGlass,
-    wineGlass,
   ]);
 
   const onSubmit = (e) => {
@@ -53,6 +49,25 @@ const MakeCocktails = ({ onAdd }) => {
       imageAlt,
       measurementsIngredients,
     };
+
+    if (!name) {
+      alert("Please enter a name for you drink");
+    }
+    if (!alcoholic) {
+      alert("Please tell us if your drink contains alcohol");
+    }
+    if (!glass) {
+      alert("Please enter what glass your drink should be served in");
+    }
+    if (!instructions) {
+      alert("Please input the instructions for making your drink");
+    }
+    if (!image) {
+      alert("Please choose an image for your drink");
+    }
+    if (measurementsIngredients.length < 1) {
+      alert("Please add the ingredients for your drink");
+    }
 
     onAdd(drink);
 
