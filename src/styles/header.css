@@ -1,7 +1,22 @@
-.header {
-    padding: 60px;
-    text-align: center;
-    background: #1abc9c;
-    color: white;
-    font-size: 30px;
+header {
+   display: flex;
+   
   }
+
+header h1 {
+    display: flex;
+    margin-block-start: 3em;
+    margin-block-end: 0em;
+    margin-inline-start: 100px;
+    margin-inline-end: 0px;
+    font: 40px Kannada MN, sans-serif;
+    fill: white;
+    border-color: black;
+}
+
+header img {
+    display: flex;
+    background-position: left;
+    width: 250px;
+    float: left;
+}

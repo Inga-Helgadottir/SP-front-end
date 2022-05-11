@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import LogIn from "./components/LogIn";
 import "./styles/App.css";
-import img from "../images/logo.png";
 import { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
@@ -16,11 +15,11 @@ function App() {
   const [categories, setCategories] = useState(false);
 
   //set favicon
-  var link = document.createElement("link");
-  link.type = "image/png";
-  link.rel = "icon";
-  link.href = img;
-  document.getElementsByTagName("head")[0].appendChild(link);
+  // var link = document.createElement("link");
+  // link.type = "image/png";
+  // link.rel = "icon";
+  // link.href = img;
+  // document.getElementsByTagName("head")[0].appendChild(link);
 
   const logInFunc = async (user) => {
     const res = await fetch(loginUrl, {
@@ -62,11 +61,11 @@ function App() {
     return Math.floor(new Date().getTime() / 1000) >= expiry;
   }
 
-  //this is how you check if the token is expired
-  console.log(isTokenExpired(theToken));
+  // //this is how you check if the token is expired
+  // console.log(isTokenExpired(theToken));
 
-  //this looks for the token in localStorage, we set it in the logInFunc
-  let theToken = localStorage.getItem("token");
+  // //this looks for the token in localStorage, we set it in the logInFunc
+  // let theToken = localStorage.getItem("token");
 
   return (
     <div className="App">
