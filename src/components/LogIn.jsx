@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import background from "../images/CocktailsBackground.jpeg";
 
 const LogIn = ({ onAdd }) => {
   const [username, setUserName] = useState("");
@@ -22,6 +23,9 @@ const LogIn = ({ onAdd }) => {
     setPassword("");
   };
 
+<body style={{ backgroundImage: `url(${background})` }}> 
+      </body>
+      
   return (
     <div className="borderNoTop">
       <h2>Log in</h2>

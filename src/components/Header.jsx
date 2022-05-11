@@ -3,16 +3,28 @@ import React from "react";
 // import img from "../images/glass.jpg";
 import "../styles/header.css";
 import img from "../images/logo.png";
-import background from "../images/rainbow.webp";
+import backgroundimg from "../images/rainbow.webp";
+import imgBC from "../images/CocktailsBackground.jpeg";
+import WelcomePage from "./WelcomePage";
+import MakeCocktails from "./MakeCocktails";
+import Cocktails from "./Cocktails";
+
 
 const Header = () => {
   
   return (
-    <header style={{ backgroundImage: `url(${background})` }}> 
+    <header style={{ backgroundImage: `url(${backgroundimg})` }}> 
       
       <img src={img} alt="JOIM Logo" />
       <h1>COCKTAILS</h1>
       {/* https://www.w3schools.com/cssref/pr_background-image.asp */}
+
+      <ul>
+  <li><a href={WelcomePage}>Home</a></li>
+  <li><a href={Cocktails}>Cocktails</a></li>
+  <li><a href={MakeCocktails}>Make a Cocktail</a></li>
+  {/* <li><a href="about.asp">About</a></li> */}
+</ul>
     </header>
   );
 };
