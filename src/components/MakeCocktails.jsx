@@ -8,8 +8,9 @@ import martiniGlass from "../images/martiniGlass.jpg";
 import normalGlass from "../images/normalGlass.jpg";
 import normalShortGlass from "../images/normalShortGlass.jpg";
 import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
+import { makeCocktailUrl } from "../settings";
 
-const MakeCocktails = ({ onAdd }) => {
+const MakeCocktails = (onAdd) => {
   const [inputList, setInputList] = useState([{ service: "" }]);
   const [name, setName] = useState("");
   const [alcoholic, setAlcoholic] = useState("0"); /* NEW */
@@ -27,6 +28,17 @@ const MakeCocktails = ({ onAdd }) => {
     normalShortGlass,
     tallSkinnyGlass,
   ]);
+  const makeCocktailFunc = async (cocktail) => {
+    const res = await fetch(makeCocktailUrl, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(cocktail),
+    });
+
+    const data = await res.json();
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -52,24 +64,30 @@ const MakeCocktails = ({ onAdd }) => {
 
     if (!name) {
       alert("Please enter a name for you drink");
+      return;
     }
     if (!alcoholic) {
       alert("Please tell us if your drink contains alcohol");
+      return;
     }
     if (!glass) {
       alert("Please enter what glass your drink should be served in");
+      return;
     }
     if (!instructions) {
       alert("Please input the instructions for making your drink");
+      return;
     }
     if (!image) {
       alert("Please choose an image for your drink");
+      return;
     }
     if (measurementsIngredients.length < 1) {
       alert("Please add the ingredients for your drink");
+      return;
     }
 
-    onAdd(drink);
+    makeCocktailFunc(drink);
 
     setName("");
     setAlcoholic("");

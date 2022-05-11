@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CocktailRecipe from "./components/CocktailRecipe";
 import { Cocktails } from "./components/Cocktails";
 import AlcoholUnits from "./components/AlcoholUnits";
+import MakeCocktails from "./components/MakeCocktails";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="seeCocktail/:id" element={<CocktailRecipe />}></Route>
         <Route path="seeCocktails" element={<Cocktails />}></Route>
         <Route path="alcoholUnits" element={<AlcoholUnits />}></Route>
+        <Route path="makeCocktail" element={<MakeCocktails />}></Route>
       </Route>
       <Route
         // default for when the link is wrong

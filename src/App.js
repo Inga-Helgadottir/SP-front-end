@@ -7,7 +7,7 @@ import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import Categories from "./components/Categories";
 import LogOut from "./components/LogOut";
-import { loginUrl, makeCocktailUrl } from "./settings";
+import { loginUrl } from "./settings";
 import { Cocktails } from "./components/Cocktails";
 import MakeCocktail from "./components/MakeCocktails";
 
@@ -70,17 +70,17 @@ function App() {
   //this looks for the token in localStorage, we set it in the logInFunc
   // let theToken = localStorage.getItem("token");
 
-  const makeCocktailFunc = async (cocktail) => {
-    const res = await fetch(makeCocktailUrl, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify(cocktail),
-    });
+  // const makeCocktailFunc = async (cocktail) => {
+  //   const res = await fetch(makeCocktailUrl, {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-type": "application/json",
+  //     },
+  //     body: JSON.stringify(cocktail),
+  //   });
 
-    const data = await res.json();
-  };
+  //   const data = await res.json();
+  // };
 
   return (
     <div className="App">
@@ -92,8 +92,9 @@ function App() {
       <nav className="borderNoTop">
         {/* <Link to="/">Home</Link> */}
         {/* <Link to="/seeCocktail/:id">this one</Link> */}
-        <Link to="/seeCocktails">see all cocktails</Link>
-        <Link to="/alcoholUnits">calculate alcohol units</Link>
+        <Link to="/seeCocktails">See all cocktails</Link>
+        <Link to="/alcoholUnits">Calculate alcohol units</Link>
+        <Link to="/makeCocktail">Make your own cocktail</Link>
         {/* <Link to="/swapi">Star wars</Link> */}
       </nav>
       <Outlet />

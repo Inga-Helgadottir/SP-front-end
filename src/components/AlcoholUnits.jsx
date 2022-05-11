@@ -12,62 +12,52 @@ const AlcoholUnits = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (!gender) {
+      alert("Please add your gender");
+      return;
+    }
     if (!shots) {
       alert("Please add the amount of shots you havde consumed");
+      return;
     }
     if (!kilograms) {
       alert("Please add how many kilogramms you weigh");
-    }
-    if (!startDate) {
-      alert("Please add when you started drinking");
-    }
-    if (!gender) {
-      alert("Please add your gender");
+      return;
     }
 
-    // let dontDrive = document.querySelector(".dontDrive");
     if (gender === "Male") {
       let BAL = 0.00176 * kilograms * (shots - 0.01 * kilograms * startDate);
       setBloodAlcoholLevel(BAL.toFixed(2));
       let checkSober =
         (shots - 0.01 * kilograms * startDate) * 0.01 * kilograms;
-      if (checkSober <= 0) {
-        console.log("----------------------------------");
-        console.log(document.querySelector(".dontDrive"));
-        // document.querySelector(".dontDrive").style.display = "none";
-      }
-      setSoberAgain(checkSober);
+      setSoberAgain(checkSober.toFixed(2));
     } else {
       let FBAL = 0.00218 * kilograms * (shots - 0.01 * kilograms * startDate);
       setBloodAlcoholLevel(FBAL.toFixed(2));
       let checkSober =
         (shots - 0.01 * kilograms * startDate) * 0.01 * kilograms;
-      if (checkSober <= 0) {
-        console.log("----------------------------------");
-        // document.querySelector(".dontDrive").style.display = "none";
-      }
-      setSoberAgain(checkSober);
+      setSoberAgain(checkSober.toFixed(2));
     }
-
-    // 2 timer for 50 kg at forbrænde 1 genstand
-    // 1 time for 50 kg ½ genstand.
-    // 0.01 genstand per kg kropsvægt i timen
   };
 
   return (
     <div>
       {!bloodAlcoholLevel && (
         <form onSubmit={onSubmit}>
-          <h1>Calculate how many alcohol units you have consumed</h1>
+          <h2>Calculate how many units of alcohol you have consumed</h2>
           <div className="form-control">
             <label>What is your gender</label>
 
-            <div onChange={(e) => setGender(e.target.value)}>
-              <input type="radio" value="Male" name="gender" /> Male
-              <input type="radio" value="Female" name="gender" /> Female
+            <div
+              className="radioBtns"
+              onChange={(e) => setGender(e.target.value)}
+            >
+              <input type="radio" value="Male" name="gender" /> Male,
+              <input type="radio" value="Female" name="gender" /> Female,
               <input type="radio" value="Other" name="gender" /> Other
             </div>
           </div>
+
           <div className="form-control">
             <label>Input the amount of alcohol in shots</label>
 
@@ -89,8 +79,9 @@ const AlcoholUnits = () => {
               onChange={(e) => setKilograms(e.target.value)}
             ></input>
           </div>
+
           <div className="form-control">
-            <label>how many hours since you started drinking</label>
+            <label>How many hours since you started drinking</label>
 
             <input
               type="number"
@@ -103,17 +94,24 @@ const AlcoholUnits = () => {
           <input type="submit" value="Calculate units" className="btn" />
         </form>
       )}
-      {bloodAlcoholLevel && (
+
+      {soberAgain < 0 && (
         <div>
-          <h3>Your blood alcohol level is {bloodAlcoholLevel}</h3>
+          <h3>Your blood alcohol level is: {bloodAlcoholLevel}</h3>
+          <h3>You are sober!</h3>
+          <a href="/alcoholUnits">Click here to see the form again</a>
+        </div>
+      )}
+
+      {soberAgain > 0 && (
+        <div>
+          <h3>Your blood alcohol level is: {bloodAlcoholLevel}</h3>
           <h3>
             If you stop drinking now you will be sober in {soberAgain} hours
           </h3>
-          <h2 className="dontDrive">Please DO NOT DRIVE!</h2>
+          <h2 className="dontDrive">PLEASE DO NOT DRIVE!</h2>
+          <a href="/alcoholUnits">Click here to see the form again</a>
         </div>
-      )}
-      {soberAgain > 0 && (
-        <a href="/alcoholUnits">Click here to see the form again</a>
       )}
     </div>
   );
