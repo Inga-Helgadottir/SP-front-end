@@ -31,13 +31,27 @@ const AlcoholUnits = () => {
       setBloodAlcoholLevel(BAL.toFixed(2));
       let checkSober =
         (shots - 0.01 * kilograms * startDate) * 0.01 * kilograms;
-      setSoberAgain(checkSober.toFixed(2));
+
+      let checkSoberString = checkSober.toString();
+      const checkSoberSplit = checkSoberString.split("");
+      if (checkSoberSplit.length === 1) {
+        setSoberAgain(checkSober.toFixed(0));
+      } else {
+        setSoberAgain(checkSober.toFixed(2));
+      }
     } else {
       let FBAL = 0.00218 * kilograms * (shots - 0.01 * kilograms * startDate);
       setBloodAlcoholLevel(FBAL.toFixed(2));
       let checkSober =
         (shots - 0.01 * kilograms * startDate) * 0.01 * kilograms;
-      setSoberAgain(checkSober.toFixed(2));
+
+      let checkSoberString = checkSober.toString();
+      const checkSoberSplit = checkSoberString.split("");
+      if (checkSoberSplit.length === 1) {
+        setSoberAgain(checkSober.toFixed(0));
+      } else {
+        setSoberAgain(checkSober.toFixed(2));
+      }
     }
   };
 
@@ -107,7 +121,9 @@ const AlcoholUnits = () => {
         <div>
           <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
           <h2>You are sober!</h2>
-          <a href="/alcoholUnits">Click here to see the form again</a>
+          <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
+            Click here to see the form again
+          </a>
         </div>
       )}
 
@@ -115,7 +131,7 @@ const AlcoholUnits = () => {
         <div>
           <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
           <h2>
-            If you stop drinking now you, will be sober in {soberAgain} hours
+            If you stop drinking now, you will be sober in {soberAgain} hours
           </h2>
           <h2 className="dontDrive">PLEASE DO NOT DRIVE!</h2>
           <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
