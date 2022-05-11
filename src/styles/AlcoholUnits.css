@@ -2,6 +2,7 @@
   background-color: red;
   border: solid 2px black;
   text-decoration: underline;
+  padding: 10px 0;
 }
 .radioBtns {
   display: flex;
@@ -11,4 +12,7 @@
   font-size: 30px;
   font-weight: bold;
   padding: 15px 0;
+}
+.alcoholUnitsBackLink {
+  color: black;
 }

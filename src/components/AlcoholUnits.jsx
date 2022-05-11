@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/AlcoholUnits.css";
+import test from "../images/cocktailGlass.jpg";
 
 const AlcoholUnits = () => {
   const [shots, setShots] = useState(0);
@@ -41,12 +42,16 @@ const AlcoholUnits = () => {
   };
 
   return (
-    <div>
+    <div
+    //   style={{
+    //     backgroundImage: `url(${test}`,
+    //   }}
+    >
       {!bloodAlcoholLevel && (
         <form onSubmit={onSubmit}>
-          <h2>Calculate how many units of alcohol you have consumed</h2>
+          <h2>Find out what your blood alcohol level is</h2>
           <div className="form-control">
-            <label>What is your gender</label>
+            <label>What is your gender?</label>
 
             <div
               className="radioBtns"
@@ -59,7 +64,7 @@ const AlcoholUnits = () => {
           </div>
 
           <div className="form-control">
-            <label>Input the amount of alcohol in shots</label>
+            <label>Input the amount of alcohol in shots?</label>
 
             <input
               type="number"
@@ -70,7 +75,7 @@ const AlcoholUnits = () => {
           </div>
 
           <div className="form-control">
-            <label>How many kilograms do you weigh</label>
+            <label>How many kilograms do you weigh?</label>
 
             <input
               type="number"
@@ -81,7 +86,7 @@ const AlcoholUnits = () => {
           </div>
 
           <div className="form-control">
-            <label>How many hours since you started drinking</label>
+            <label>How many hours since you started drinking?</label>
 
             <input
               type="number"
@@ -97,20 +102,22 @@ const AlcoholUnits = () => {
 
       {soberAgain < 0 && (
         <div>
-          <h3>Your blood alcohol level is: {bloodAlcoholLevel}</h3>
-          <h3>You are sober!</h3>
+          <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
+          <h2>You are sober!</h2>
           <a href="/alcoholUnits">Click here to see the form again</a>
         </div>
       )}
 
       {soberAgain > 0 && (
         <div>
-          <h3>Your blood alcohol level is: {bloodAlcoholLevel}</h3>
-          <h3>
-            If you stop drinking now you will be sober in {soberAgain} hours
-          </h3>
+          <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
+          <h2>
+            If you stop drinking now you, will be sober in {soberAgain} hours
+          </h2>
           <h2 className="dontDrive">PLEASE DO NOT DRIVE!</h2>
-          <a href="/alcoholUnits">Click here to see the form again</a>
+          <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
+            Click here to see the form again
+          </a>
         </div>
       )}
     </div>
