@@ -100,7 +100,12 @@ function App() {
       {/* <MakeCocktail onAdd={makeCocktailFunc} /> */}
       <Header />
 
-      {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
+      {/* {loggedIn ? (
+        <WelcomePage name={userName} role={userRole} />
+      ) : (
+        <WelcomePage name="null" role="null" />
+        )} */}
+      <WelcomePage name="null" role="null" />
 
       <nav>
         {/* <Link to="/">Home</Link> */}
@@ -143,6 +148,15 @@ function App() {
         >
           Make your own cocktail
         </Link>
+        {/* <Link
+          to="/logIn"
+          onClick={(e) => {
+            removeActive();
+            addActive(e.target);
+          }}
+        >
+          Log in
+        </Link> */}
         {/* <Link to="/swapi">Star wars</Link> */}
       </nav>
       <Outlet />
