@@ -93,13 +93,14 @@ function App() {
       ) : (
         <WelcomePage name="null" role="null" />
       )}
+
       <FaBars
         className="dropDownIcon"
         onClick={(e) => {
           setDropDown(!dropDown);
         }}
       />
-      {dropDown && (
+      {/* {dropDown && (
         <nav>
           <ul>
             <Link
@@ -141,13 +142,58 @@ function App() {
             </Link>
           </ul>
         </nav>
+      )} */}
+      {dropDown && (
+        <nav>
+          <Link
+            className="active"
+            onClick={(e) => {
+              removeActive();
+              addActive(e.target);
+            }}
+            to="/"
+          >
+            Home
+          </Link>
+          <Link
+            to="/seeCocktails"
+            onClick={(e) => {
+              removeActive();
+              addActive(e.target);
+            }}
+          >
+            See all cocktails
+          </Link>
+          <Link
+            to="/alcoholUnits"
+            onClick={(e) => {
+              removeActive();
+              addActive(e.target);
+            }}
+          >
+            Calculate alcohol units
+          </Link>
+          <Link
+            to="/makeCocktail"
+            onClick={(e) => {
+              removeActive();
+              addActive(e.target);
+            }}
+          >
+            Make your own cocktail
+          </Link>
+        </nav>
       )}
       <Outlet />
       {/* this is the showhide for the category options */}
       {/* {categories && <Categories />} */}
-      <hr id="logInScroll" />
-      {!loggedIn && <LogIn onAdd={logInFunc} />}
       {!loggedIn && (
+        <div>
+          <hr id="logInScroll" />
+          <LogIn onAdd={logInFunc} />
+        </div>
+      )}
+      {loggedIn && (
         <div>
           <hr id="logOutScroll" />
           <LogOut onClick={logOutFunc} />

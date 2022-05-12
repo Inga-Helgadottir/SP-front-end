@@ -1,12 +1,6 @@
 import React from "react";
-import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 const WelcomePage = ({ name, role }) => {
-  const styles = {
-    color: "black",
-    textDecoration: "none",
-  };
-
   return (
     <div style={{ marginBottom: "20px" }}>
       {name === "null" ? (
