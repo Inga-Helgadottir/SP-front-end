@@ -1,6 +1,7 @@
 // import Header from "./components/Header";
 // import LogIn from "./components/LogIn";
 import "./styles/App.css";
+import "./styles/nav.css";
 
 import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
