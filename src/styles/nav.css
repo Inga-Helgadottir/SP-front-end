@@ -4,6 +4,7 @@ nav {
   border: solid 2px black;
   padding: 5px;
   background-color: white;
+  flex-wrap: wrap;
 }
 nav a {
   color: black;

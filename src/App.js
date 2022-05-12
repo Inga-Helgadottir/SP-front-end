@@ -102,49 +102,7 @@ function App() {
           }}
         />
       )}
-      {/* {dropDown && (
-        <nav>
-          <ul>
-            <Link
-              className="active"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-              to="/"
-            >
-              Home
-            </Link>
-            <Link
-              to="/seeCocktails"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              See all cocktails
-            </Link>
-            <Link
-              to="/alcoholUnits"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              Calculate alcohol units
-            </Link>
-            <Link
-              to="/makeCocktail"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              Make your own cocktail
-            </Link>
-          </ul>
-        </nav>
-      )} */}
+
       {dropDown && (
         <nav>
           <FaAngleUp
@@ -193,8 +151,7 @@ function App() {
         </nav>
       )}
       <Outlet />
-      {/* this is the showhide for the category options */}
-      {/* {categories && <Categories />} */}
+
       {!loggedIn && (
         <div>
           <hr id="logInScroll" />
@@ -212,3 +169,55 @@ function App() {
 }
 
 export default App;
+
+{
+  /* this is the showhide for the category options */
+}
+{
+  /* {categories && <Categories />} */
+}
+{
+  /* {dropDown && (
+        <nav>
+          <ul>
+            <Link
+              className="active"
+              onClick={(e) => {
+                removeActive();
+                addActive(e.target);
+              }}
+              to="/"
+            >
+              Home
+            </Link>
+            <Link
+              to="/seeCocktails"
+              onClick={(e) => {
+                removeActive();
+                addActive(e.target);
+              }}
+            >
+              See all cocktails
+            </Link>
+            <Link
+              to="/alcoholUnits"
+              onClick={(e) => {
+                removeActive();
+                addActive(e.target);
+              }}
+            >
+              Calculate alcohol units
+            </Link>
+            <Link
+              to="/makeCocktail"
+              onClick={(e) => {
+                removeActive();
+                addActive(e.target);
+              }}
+            >
+              Make your own cocktail
+            </Link>
+          </ul>
+        </nav>
+      )} */
+}
