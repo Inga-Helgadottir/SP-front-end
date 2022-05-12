@@ -13,7 +13,11 @@ const WelcomePage = ({ name, role }) => {
         <div>
           <h2>Welcome!</h2>
           <h3>You are not logged in</h3>
-          <a href="/logIn" className="btn" style={styles}>
+          <a
+            href="#logInScroll"
+            className="btn"
+            style={{ color: "black", textDecoration: "none" }}
+          >
             Click here to log in
           </a>
         </div>
@@ -21,6 +25,13 @@ const WelcomePage = ({ name, role }) => {
         <div>
           <h2>Welcome {name} !</h2>
           <h3>Your role on this site is {role}</h3>
+          <a
+            href="#logOutScroll"
+            className="btn"
+            style={{ color: "black", textDecoration: "none" }}
+          >
+            Click here to log out
+          </a>
         </div>
       )}
     </div>

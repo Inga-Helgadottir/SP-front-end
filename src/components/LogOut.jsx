@@ -2,8 +2,8 @@ import React from "react";
 
 const LogOut = ({ onClick }) => {
   return (
-    <div className="borderNoTop">
-      <button className="logOut" onClick={onClick}>
+    <div>
+      <button className="btn" onClick={onClick}>
         Log out
       </button>
     </div>

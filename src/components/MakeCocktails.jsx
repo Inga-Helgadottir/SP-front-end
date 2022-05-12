@@ -11,7 +11,7 @@ import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
 import { makeCocktailUrl } from "../settings";
 import backgroundimg from "../images/CocktailsBackground.jpeg";
 
-const MakeCocktails = (onAdd) => {
+const MakeCocktails = () => {
   const [inputList, setInputList] = useState([{ service: "" }]);
   const [name, setName] = useState("");
   const [alcoholic, setAlcoholic] = useState("0"); /* NEW */

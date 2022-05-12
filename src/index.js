@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         <Route path="seeCocktails" element={<Cocktails />}></Route>
         <Route path="alcoholUnits" element={<AlcoholUnits />}></Route>
         <Route path="makeCocktail" element={<MakeCocktails />}></Route>
-        <Route path="logIn" element={<LogIn />}></Route>
       </Route>
       <Route
         // default for when the link is wrong
