@@ -11,6 +11,7 @@ import LogOut from "./components/LogOut";
 import { loginUrl } from "./settings";
 import { Cocktails } from "./components/Cocktails";
 import MakeCocktail from "./components/MakeCocktails";
+import img from "./images/logo.png";
 
 function App() {
   // const [userName, setUserName] = useState("");
@@ -19,11 +20,11 @@ function App() {
   // const [categories, setCategories] = useState(false);
 
   //set favicon
-  // var link = document.createElement("link");
-  // link.type = "image/png";
-  // link.rel = "icon";
-  // link.href = img;
-  // document.getElementsByTagName("head")[0].appendChild(link);
+  var link = document.createElement("link");
+  link.type = "image/png";
+  link.rel = "icon";
+  link.href = img;
+  document.getElementsByTagName("head")[0].appendChild(link);
 
   // const logInFunc = async (user) => {
   //   const res = await fetch(loginUrl, {
