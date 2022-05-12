@@ -5,11 +5,5 @@ change jsx and css for header, welcomePage, cocktail, cocktails, cocktailRecipe,
 
 
 11/05
-fix endpoint our db (seeAll, seeId)
-
-alcohol units front-end i
 cocktialRecipe  j+o
 Nav bar + bg img
-
-12/05
-check out our upwork

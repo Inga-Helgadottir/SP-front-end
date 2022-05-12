@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { cocktalLetterUrl, allCocktailsDB } from "../settings";
 import "../styles/cocktails.css";
 import { CocktailDB } from "./CocktailDB";
+import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 export const Cocktails = () => {
   const [cocktailsList, setCocktailsList] = useState([]);
@@ -35,20 +36,32 @@ export const Cocktails = () => {
     return data;
   };
 
+  const styles = {
+    bgElement: {
+      backgroundImage: `url(${backgroundimg})`,
+    },
+
+    content: {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+    },
+  };
+
   return (
-    <div className="allCocktails">
-      <div className="Cocktails">
-        {cocktailsList.length > 0 &&
-          cocktailsList.map((element, index) => {
-            return <Cocktail key={index} props={element} />;
-          })}
-      </div>
-      <h2>Cocktails made by our users</h2>
-      <div className="Cocktails">
-        {cocktailsListDB.length > 0 &&
-          cocktailsListDB.map((cocktail, index) => {
-            return <CocktailDB key={index} props={cocktail} />;
-          })}
+    <div className="allCocktails" style={styles.bgElement}>
+      <div style={styles.content}>
+        <div className="Cocktails">
+          {cocktailsList.length > 0 &&
+            cocktailsList.map((element, index) => {
+              return <Cocktail key={index} props={element} />;
+            })}
+        </div>
+        <h2 style={{ marginTop: "15px" }}>Cocktails made by our users</h2>
+        <div className="Cocktails">
+          {cocktailsListDB.length > 0 &&
+            cocktailsListDB.map((cocktail, index) => {
+              return <CocktailDB key={index} props={cocktail} />;
+            })}
+        </div>
       </div>
     </div>
   );

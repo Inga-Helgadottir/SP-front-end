@@ -9,6 +9,7 @@ import normalGlass from "../images/normalGlass.jpg";
 import normalShortGlass from "../images/normalShortGlass.jpg";
 import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
 import { makeCocktailUrl } from "../settings";
+import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 const MakeCocktails = (onAdd) => {
   const [inputList, setInputList] = useState([{ service: "" }]);
@@ -124,94 +125,106 @@ const MakeCocktails = (onAdd) => {
     setImageAlt(name);
   };
 
+  const styles = {
+    bgElement: {
+      backgroundImage: `url(${backgroundimg})`,
+    },
+
+    content: {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+    },
+  };
+
   return (
-    <div>
-      <h2>Make your own cocktail</h2>
+    <div style={styles.bgElement}>
+      <div style={styles.content}>
+        <h2>Make your own cocktail</h2>
 
-      <form onSubmit={onSubmit}>
-        <div className="form-control">
-          <label>Name of your cocktail?</label>
+        <form onSubmit={onSubmit}>
+          <div className="form-control">
+            <label>Name of your cocktail?</label>
 
-          <input
-            type="text"
-            placeholder="Name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          ></input>
-        </div>
+            <input
+              type="text"
+              placeholder="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            ></input>
+          </div>
 
-        <div className="form-control">
-          <label>Does this drink contail alcohol?</label>
-          <select onChange={(e) => settingAlcoholic(e.target.value)}>
-            <option value="0">Is there alcohol?</option>
-            <option value="Yes">Yes</option>
-            <option value="No">No</option>
-          </select>
-        </div>
+          <div className="form-control">
+            <label>Does this drink contail alcohol?</label>
+            <select onChange={(e) => settingAlcoholic(e.target.value)}>
+              <option value="0">Is there alcohol?</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+            </select>
+          </div>
 
-        <div className="form-control">
-          <label>What kind of glass should you put your drink in?</label>
-          <input
-            type="text"
-            placeholder="Glass"
-            value={glass}
-            onChange={(e) => setGlass(e.target.value)}
-          ></input>
-        </div>
+          <div className="form-control">
+            <label>What kind of glass should you put your drink in?</label>
+            <input
+              type="text"
+              placeholder="Glass"
+              value={glass}
+              onChange={(e) => setGlass(e.target.value)}
+            ></input>
+          </div>
 
-        <div className="form-control">
-          <label>What are the instructions for making your drink?</label>
-          <textarea
-            type="text"
-            placeholder="Instructions"
-            value={instructions}
-            onChange={(e) => setInstructions(e.target.value)}
-          ></textarea>
-        </div>
+          <div className="form-control">
+            <label>What are the instructions for making your drink?</label>
+            <textarea
+              type="text"
+              placeholder="Instructions"
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+            ></textarea>
+          </div>
 
-        <div className="form-control">
-          <label>What ingredients are needed to make your drink?</label>
+          <div className="form-control">
+            <label>What ingredients are needed to make your drink?</label>
 
-          {inputList.map((singleInput, index) => {
-            return (
-              <input
-                className="miInput"
-                key={index}
-                type="text"
-                placeholder="1/2 shot Vodka"
-              ></input>
-            );
-          })}
-
-          <button onClick={handleInputAdd} className="btn">
-            Click here to add another ingredient
-          </button>
-        </div>
-
-        <div className="form-control">
-          <label>Which of these images looks the most like your drink?</label>
-
-          <div id="images">
-            {imageOptions.map((imageOption, index) => {
-              let optionAltArray = imageOption.split(/[./]/);
-              let option = optionAltArray[3];
+            {inputList.map((singleInput, index) => {
               return (
-                <img
-                  className={"imageOption imageOption" + index}
+                <input
+                  className="miInput"
                   key={index}
-                  src={imageOption}
-                  alt={option}
-                  onClick={(e) => {
-                    imageClicked(index, option, imageOption);
-                  }}
-                />
+                  type="text"
+                  placeholder="1/2 shot Vodka"
+                ></input>
               );
             })}
-          </div>
-        </div>
 
-        <input type="submit" value="Make your cocktail" className="btn" />
-      </form>
+            <button onClick={handleInputAdd} className="btn">
+              Click here to add another ingredient
+            </button>
+          </div>
+
+          <div className="form-control">
+            <label>Which of these images looks the most like your drink?</label>
+
+            <div id="images">
+              {imageOptions.map((imageOption, index) => {
+                let optionAltArray = imageOption.split(/[./]/);
+                let option = optionAltArray[3];
+                return (
+                  <img
+                    className={"imageOption imageOption" + index}
+                    key={index}
+                    src={imageOption}
+                    alt={option}
+                    onClick={(e) => {
+                      imageClicked(index, option, imageOption);
+                    }}
+                  />
+                );
+              })}
+            </div>
+          </div>
+
+          <input type="submit" value="Make your cocktail" className="btn" />
+        </form>
+      </div>
     </div>
   );
 };

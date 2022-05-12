@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
 import Categories from "./components/Categories";
+import Header from "./components/Header";
 import LogOut from "./components/LogOut";
 import { loginUrl } from "./settings";
 import { Cocktails } from "./components/Cocktails";
@@ -87,13 +88,14 @@ function App() {
   return (
     <div className="App">
       {/* <MakeCocktail onAdd={makeCocktailFunc} /> */}
-      {/* <Header /> */}
+      <Header />
 
       {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
 
       <nav className="borderNoTop">
         {/* <Link to="/">Home</Link> */}
         {/* <Link to="/seeCocktail/:id">this one</Link> */}
+        <Link to="/">Home</Link>
         <Link to="/seeCocktails">See all cocktails</Link>
         <Link to="/alcoholUnits">Calculate alcohol units</Link>
         <Link to="/makeCocktail">Make your own cocktail</Link>

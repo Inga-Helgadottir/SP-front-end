@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/AlcoholUnits.css";
+import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 const AlcoholUnits = () => {
   const [shots, setShots] = useState(0);
@@ -53,87 +54,97 @@ const AlcoholUnits = () => {
       }
     }
   };
+  const styles = {
+    bgElement: {
+      backgroundImage: `url(${backgroundimg})`,
+    },
+
+    content: {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+    },
+  };
 
   return (
-    <div>
-      {!bloodAlcoholLevel && (
-        <form onSubmit={onSubmit}>
-          <h2>Find out what your blood alcohol level is</h2>
-          <div className="form-control">
-            <label>What is your gender?</label>
+    <div style={styles.bgElement}>
+      <div style={styles.content}>
+        {!bloodAlcoholLevel && (
+          <form onSubmit={onSubmit}>
+            <h2>Find out what your blood alcohol level is</h2>
+            <div className="form-control">
+              <label>What is your gender?</label>
 
-            <div
-              className="radioBtns"
-              onChange={(e) => setGender(e.target.value)}
-            >
-              <input type="radio" value="Male" name="gender" />
-              <label>Male,</label>
-              <input type="radio" value="Female" name="gender" />
-              <label>Female,</label>
-              <input type="radio" value="Other" name="gender" />
-              <label>Other</label>
+              <div
+                className="radioBtns"
+                onChange={(e) => setGender(e.target.value)}
+              >
+                <input type="radio" value="Male" name="gender" />
+                <label>Male,</label>
+                <input type="radio" value="Female" name="gender" />
+                <label>Female,</label>
+                <input type="radio" value="Other" name="gender" />
+                <label>Other</label>
+              </div>
             </div>
+
+            <div className="form-control">
+              <label>Input the amount of alcohol in shots?</label>
+
+              <input
+                type="number"
+                placeholder="Number of shots"
+                value={shots}
+                onChange={(e) => setShots(e.target.value)}
+              ></input>
+            </div>
+
+            <div className="form-control">
+              <label>How many kilograms do you weigh?</label>
+
+              <input
+                type="number"
+                placeholder="Kilograms"
+                value={kilograms}
+                onChange={(e) => setKilograms(e.target.value)}
+              ></input>
+            </div>
+
+            <div className="form-control">
+              <label>How many hours since you started drinking?</label>
+
+              <input
+                type="number"
+                placeholder="hours since you started drinking"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+              ></input>
+            </div>
+
+            <input type="submit" value="Calculate units" className="btn" />
+          </form>
+        )}
+
+        {soberAgain < 0 && (
+          <div>
+            <h2>You are sober!</h2>
+            <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
+              Click here to see the form again
+            </a>
           </div>
+        )}
 
-          <div className="form-control">
-            <label>Input the amount of alcohol in shots?</label>
-
-            <input
-              type="number"
-              placeholder="Number of shots"
-              value={shots}
-              onChange={(e) => setShots(e.target.value)}
-            ></input>
+        {soberAgain > 0 && (
+          <div>
+            <h2>Your blood alcohol level is: {bloodAlcoholLevel}!</h2>
+            <h2>
+              If you stop drinking now, you will be sober in {soberAgain} hours!
+            </h2>
+            <h2 className="dontDrive">PLEASE DO NOT DRIVE!</h2>
+            <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
+              Click here to see the form again
+            </a>
           </div>
-
-          <div className="form-control">
-            <label>How many kilograms do you weigh?</label>
-
-            <input
-              type="number"
-              placeholder="Kilograms"
-              value={kilograms}
-              onChange={(e) => setKilograms(e.target.value)}
-            ></input>
-          </div>
-
-          <div className="form-control">
-            <label>How many hours since you started drinking?</label>
-
-            <input
-              type="number"
-              placeholder="hours since you started drinking"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-            ></input>
-          </div>
-
-          <input type="submit" value="Calculate units" className="btn" />
-        </form>
-      )}
-
-      {soberAgain < 0 && (
-        <div>
-          <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
-          <h2>You are sober!</h2>
-          <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
-            Click here to see the form again
-          </a>
-        </div>
-      )}
-
-      {soberAgain > 0 && (
-        <div>
-          <h2>Your blood alcohol level is: {bloodAlcoholLevel}</h2>
-          <h2>
-            If you stop drinking now, you will be sober in {soberAgain} hours
-          </h2>
-          <h2 className="dontDrive">PLEASE DO NOT DRIVE!</h2>
-          <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
-            Click here to see the form again
-          </a>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
