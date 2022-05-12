@@ -15,6 +15,7 @@ import MakeCocktail from "./components/MakeCocktails";
 import img from "./images/logo.png";
 
 function App() {
+  const [count, setCount] = useState(0);
   // const [userName, setUserName] = useState("");
   // const [userRole, setUserRole] = useState("");
   // const [loggedIn, setLoggedIn] = useState(false);
@@ -84,6 +85,15 @@ function App() {
 
   //   const data = await res.json();
   // };
+  const removeActive = () => {
+    let navLinks = document.querySelectorAll("nav a");
+    for (let i = 0; i < navLinks.length; i++) {
+      navLinks[i].classList.remove("active");
+    }
+  };
+  const addActive = (e) => {
+    e.classList.add("active");
+  };
 
   return (
     <div className="App">
@@ -92,13 +102,47 @@ function App() {
 
       {/* {loggedIn && <WelcomePage name={userName} role={userRole} />} */}
 
-      <nav className="borderNoTop">
+      <nav>
         {/* <Link to="/">Home</Link> */}
         {/* <Link to="/seeCocktail/:id">this one</Link> */}
-        <Link to="/">Home</Link>
-        <Link to="/seeCocktails">See all cocktails</Link>
-        <Link to="/alcoholUnits">Calculate alcohol units</Link>
-        <Link to="/makeCocktail">Make your own cocktail</Link>
+        <Link
+          className="active"
+          // className={this.state.active ? "active" : null}
+          onClick={(e) => {
+            removeActive();
+            addActive(e.target);
+          }}
+          to="/"
+        >
+          Home
+        </Link>
+        <Link
+          to="/seeCocktails"
+          onClick={(e) => {
+            removeActive();
+            addActive(e.target);
+          }}
+        >
+          See all cocktails
+        </Link>
+        <Link
+          to="/alcoholUnits"
+          onClick={(e) => {
+            removeActive();
+            addActive(e.target);
+          }}
+        >
+          Calculate alcohol units
+        </Link>
+        <Link
+          to="/makeCocktail"
+          onClick={(e) => {
+            removeActive();
+            addActive(e.target);
+          }}
+        >
+          Make your own cocktail
+        </Link>
         {/* <Link to="/swapi">Star wars</Link> */}
       </nav>
       <Outlet />

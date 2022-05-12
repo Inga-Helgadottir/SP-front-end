@@ -3,7 +3,7 @@ import React from "react";
 const CocktailRecipe = () => {
   let currentUrl = window.location.href;
   let urlArray = currentUrl.split("/");
-  const currentIndex = urlArray[4];
+  const currentIndex = urlArray[urlArray.length - 1];
 
   return (
     <div>
