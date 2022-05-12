@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "../styles/AlcoholUnits.css";
-import test from "../images/cocktailGlass.jpg";
 
 const AlcoholUnits = () => {
   const [shots, setShots] = useState(0);
@@ -56,11 +55,7 @@ const AlcoholUnits = () => {
   };
 
   return (
-    <div
-    //   style={{
-    //     backgroundImage: `url(${test}`,
-    //   }}
-    >
+    <div>
       {!bloodAlcoholLevel && (
         <form onSubmit={onSubmit}>
           <h2>Find out what your blood alcohol level is</h2>
