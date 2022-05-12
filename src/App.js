@@ -1,7 +1,7 @@
 import LogIn from "./components/LogIn";
 import "./styles/App.css";
 import "./styles/nav.css";
-import { FaBars } from "react-icons/fa";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
@@ -94,12 +94,14 @@ function App() {
         <WelcomePage name="null" role="null" />
       )}
 
-      <FaBars
-        className="dropDownIcon"
-        onClick={(e) => {
-          setDropDown(!dropDown);
-        }}
-      />
+      {!dropDown && (
+        <FaAngleDown
+          className="dropDownIcon"
+          onClick={(e) => {
+            setDropDown(!dropDown);
+          }}
+        />
+      )}
       {/* {dropDown && (
         <nav>
           <ul>
@@ -145,6 +147,12 @@ function App() {
       )} */}
       {dropDown && (
         <nav>
+          <FaAngleUp
+            className="dropDownIcon"
+            onClick={(e) => {
+              setDropDown(!dropDown);
+            }}
+          />
           <Link
             className="active"
             onClick={(e) => {

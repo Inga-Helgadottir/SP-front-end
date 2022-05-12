@@ -56,8 +56,8 @@ ul a:hover {
   left: 490px;
   cursor: pointer;
   position: fixed; */
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: auto;
   display: flex;
   justify-content: start;
   background-color: white;
