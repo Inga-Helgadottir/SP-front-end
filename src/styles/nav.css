@@ -12,7 +12,8 @@ nav a {
   font-size: 25px;
 }
 nav a:hover {
-  text-decoration: underline;
+  background-color: rgb(29, 29, 29);
+  color: white;
 }
 
 /* ------------------------------------------------ */
@@ -47,7 +48,6 @@ ul a:hover {
 .active {
   background-color: #04aa6d;
   color: white;
-  text-decoration: underline;
 }
 
 .dropDownIcon {

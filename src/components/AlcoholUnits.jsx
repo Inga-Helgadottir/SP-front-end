@@ -57,6 +57,7 @@ const AlcoholUnits = () => {
   const styles = {
     bgElement: {
       backgroundImage: `url(${backgroundimg})`,
+      marginBottom: "20px",
     },
 
     content: {
@@ -132,7 +133,7 @@ const AlcoholUnits = () => {
           </div>
         )}
 
-        {soberAgain > 0 && (
+        {soberAgain >= 0 && (
           <div>
             <h2>Your blood alcohol level is: {bloodAlcoholLevel}!</h2>
             <h2>

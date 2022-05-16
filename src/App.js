@@ -12,13 +12,46 @@ import { loginUrl } from "./settings";
 import { Cocktails } from "./components/Cocktails";
 import MakeCocktail from "./components/MakeCocktails";
 import img from "./images/logo.png";
-
+//TODO: fix role list thingy-----------------------------------------------------------------------------------------------------------------------------------------
 function App() {
   const [dropDown, setDropDown] = useState(false);
   const [userName, setUserName] = useState("");
-  const [userRole, setUserRole] = useState("");
+  const [userRole, setUserRole] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
   const [categories, setCategories] = useState(false);
+
+  window.onload = () => {
+    let checkLoggedIn = localStorage.getItem("loggedIn");
+    if (checkLoggedIn !== null || checkLoggedIn !== undefined) {
+      let userNameLS = localStorage.getItem("userName");
+      let loggedInLS = localStorage.getItem("loggedIn");
+      let userRoleLS = JSON.parse(localStorage.getItem("userRole"));
+
+      console.log("check ls");
+      console.log(userNameLS);
+      console.log(userRoleLS);
+      console.log(loggedInLS);
+
+      setUserName(userNameLS);
+      setLoggedIn(loggedInLS);
+      setUserRole(userRoleLS);
+    }
+  };
+
+  function checkAfterHalfAnHour(token) {
+    console.log("checkAfterHalfAnHour----------");
+    setTimeout(function () {
+      if (isTokenExpired(token)) {
+        //true == expired
+        logOutFunc();
+      }
+    }, 1800000);
+  }
+
+  function isTokenExpired(token) {
+    const expiry = JSON.parse(atob(token.split(".")[1])).exp;
+    return Math.floor(new Date().getTime() / 1000) >= expiry;
+  }
 
   //set favicon
   var link = document.createElement("link");
@@ -50,8 +83,15 @@ function App() {
     ) {
       setUserName(data.username);
       setUserRole(data.role0);
+      let roleArray = [data.role0, data.role1];
+      setUserRole(data.role0, data.role1);
+      localStorage.setItem("userRole", JSON.stringify(roleArray));
+
       setLoggedIn(true);
-      localStorage.setItem("token", data.token);
+      localStorage.setItem("userName", data.username);
+      localStorage.setItem("loggedIn", true);
+      checkAfterHalfAnHour(data.token);
+      window.location.reload();
     }
   };
 
@@ -61,16 +101,6 @@ function App() {
     setUserRole("");
     localStorage.clear();
   };
-
-  function isTokenExpired(token) {
-    const expiry = JSON.parse(atob(token.split(".")[1])).exp;
-    return Math.floor(new Date().getTime() / 1000) >= expiry;
-  }
-
-  // this looks for the token in localStorage, we set it in the logInFunc
-  // let theToken = localStorage.getItem("token");
-  // this is how you check if the token is expired
-  // console.log(isTokenExpired(theToken));
 
   const removeActive = () => {
     let navLinks = document.querySelectorAll("nav a");
@@ -85,11 +115,9 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       {loggedIn ? (
-        <div>
-          <WelcomePage name={userName} role={userRole} />
-          <LogOut onClick={logOutFunc} />
-        </div>
+        <WelcomePage name={userName} role={userRole} />
       ) : (
         <WelcomePage name="null" role="null" />
       )}

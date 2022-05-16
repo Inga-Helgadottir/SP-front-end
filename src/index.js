@@ -7,7 +7,6 @@ import CocktailRecipe from "./components/CocktailRecipe";
 import { Cocktails } from "./components/Cocktails";
 import AlcoholUnits from "./components/AlcoholUnits";
 import MakeCocktails from "./components/MakeCocktails";
-import LogIn from "./components/LogIn";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
