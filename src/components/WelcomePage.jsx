@@ -1,22 +1,29 @@
 import React from "react";
+import "../styles/welcomePage.css";
 
 const WelcomePage = ({ name, role }) => {
-  console.log("role");
-  console.log(role);
-  console.log(role[1]);
   return (
     <div style={{ marginBottom: "20px" }}>
       {name === "null" ? (
         <div>
           <h2>Welcome!</h2>
           <h3>You are not logged in</h3>
-          <a
-            href="#logInScroll"
-            className="btn"
-            style={{ color: "black", textDecoration: "none" }}
-          >
-            Click here to log in
-          </a>
+          <div className="logInSignUpLinks">
+            <a
+              href="#logInScroll"
+              className="btn"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              Click here to log in
+            </a>
+            <a
+              href="#signUpScroll"
+              className="btn"
+              style={{ color: "black", textDecoration: "none" }}
+            >
+              Click here to Sign up
+            </a>
+          </div>
         </div>
       ) : role[1] === null ? (
         <div>
@@ -34,7 +41,7 @@ const WelcomePage = ({ name, role }) => {
         <div>
           <h2>Welcome {name} !</h2>
           <h3>
-            Your roles on this site is {role[0]} and {role[1]}
+            Your roles on this site are {role[0]} and {role[1]}
           </h3>
           <a
             href="#logOutScroll"

@@ -8,17 +8,17 @@ import WelcomePage from "./components/WelcomePage";
 import Categories from "./components/Categories";
 import Header from "./components/Header";
 import LogOut from "./components/LogOut";
-import { loginUrl } from "./settings";
+import { loginUrl, signUpUrl } from "./settings";
 import { Cocktails } from "./components/Cocktails";
 import MakeCocktail from "./components/MakeCocktails";
+import SignUp from "./components/SignUp";
 import img from "./images/logo.png";
-//TODO: fix role list thingy-----------------------------------------------------------------------------------------------------------------------------------------
+
 function App() {
   const [dropDown, setDropDown] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState([]);
   const [loggedIn, setLoggedIn] = useState(false);
-  const [categories, setCategories] = useState(false);
 
   window.onload = () => {
     let checkLoggedIn = localStorage.getItem("loggedIn");
@@ -27,11 +27,6 @@ function App() {
       let loggedInLS = localStorage.getItem("loggedIn");
       let userRoleLS = JSON.parse(localStorage.getItem("userRole"));
 
-      console.log("check ls");
-      console.log(userNameLS);
-      console.log(userRoleLS);
-      console.log(loggedInLS);
-
       setUserName(userNameLS);
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
@@ -39,7 +34,6 @@ function App() {
   };
 
   function checkAfterHalfAnHour(token) {
-    console.log("checkAfterHalfAnHour----------");
     setTimeout(function () {
       if (isTokenExpired(token)) {
         //true == expired
@@ -62,6 +56,41 @@ function App() {
 
   const logInFunc = async (user) => {
     const res = await fetch(loginUrl, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+
+    const data = await res.json();
+
+    if (data.code !== null && data.code !== "" && data.code !== undefined) {
+      alert(data.message);
+      setLoggedIn(false);
+    }
+
+    if (
+      data.username !== null &&
+      data.username !== "" &&
+      data.username !== undefined
+    ) {
+      setUserName(data.username);
+      setUserRole(data.role0);
+      let roleArray = [data.role0, data.role1];
+      setUserRole(data.role0, data.role1);
+      localStorage.setItem("userRole", JSON.stringify(roleArray));
+
+      setLoggedIn(true);
+      localStorage.setItem("userName", data.username);
+      localStorage.setItem("loggedIn", true);
+      checkAfterHalfAnHour(data.token);
+      window.location.reload();
+    }
+  };
+
+  const signUpFunc = async (user) => {
+    const res = await fetch(signUpUrl, {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -184,6 +213,8 @@ function App() {
         <div>
           <hr id="logInScroll" />
           <LogIn onAdd={logInFunc} />
+          <hr id="signUpScroll" />
+          <SignUp onAdd={signUpFunc} />
         </div>
       )}
       {loggedIn && (
@@ -197,55 +228,3 @@ function App() {
 }
 
 export default App;
-
-{
-  /* this is the showhide for the category options */
-}
-{
-  /* {categories && <Categories />} */
-}
-{
-  /* {dropDown && (
-        <nav>
-          <ul>
-            <Link
-              className="active"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-              to="/"
-            >
-              Home
-            </Link>
-            <Link
-              to="/seeCocktails"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              See all cocktails
-            </Link>
-            <Link
-              to="/alcoholUnits"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              Calculate alcohol units
-            </Link>
-            <Link
-              to="/makeCocktail"
-              onClick={(e) => {
-                removeActive();
-                addActive(e.target);
-              }}
-            >
-              Make your own cocktail
-            </Link>
-          </ul>
-        </nav>
-      )} */
-}

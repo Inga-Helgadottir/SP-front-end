@@ -4,17 +4,13 @@ header {
 
 header h1 {
   display: flex;
-  margin-block-start: 2em;
-  margin-block-end: 0em;
-  margin-inline-start: 150px;
-  margin-inline-end: 0px;
   font: 40px Kannada MN, sans-serif;
-  fill: white;
   border-color: black;
   -webkit-text-fill-color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   font-size: 40px;
+  margin: auto auto auto 19%;
 }
 
 header img {
@@ -25,7 +21,7 @@ header img {
 }
 
 header img {
-  margin: 14px 0;
+  margin: auto 0;
   height: 10%;
   width: 20%;
 }

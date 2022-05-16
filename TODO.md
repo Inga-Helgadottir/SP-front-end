@@ -1,9 +1,38 @@
-add urls to settings
-add routes to index.js and make matching links in App.js
-use function that checks if the token is still vaid
-change jsx and css for header, welcomePage, cocktail, cocktails, cocktailRecipe, categories, searchBar
 
+Back-end and front-end:
+See all users
+Change a users role
 
-11/05
-cocktialRecipe  j+o
-Nav bar + bg img
+Front-end:
+See a cocktail recipe
+
+Other:
+Outsourcing
+Deploy (Inga resize droplet)
+
+------------------------------------------------------------------------------------------
+
+Mediaqueries - make the site look good in all screen sizes
+
+@media only screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
+}
+
+Already looks good enough:
+Cocktails
+Log in
+Sign up
+Make cocktail
+
+Need to fix:
+Header
+Nav bar
+Alcohol units (gender)
+Welcome page
+
+Find out later:
+See a cocktail recipe
+See all users
+Change a users role

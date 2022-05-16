@@ -10,6 +10,7 @@ const AlcoholUnits = () => {
   const [gender, setGender] = useState("");
   const [bloodAlcoholLevel, setBloodAlcoholLevel] = useState("");
   const [soberAgain, setSoberAgain] = useState("");
+  const [formFilled, setFormFilled] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +54,7 @@ const AlcoholUnits = () => {
         setSoberAgain(checkSober.toFixed(2));
       }
     }
+    setFormFilled(true);
   };
   const styles = {
     bgElement: {
@@ -124,7 +126,7 @@ const AlcoholUnits = () => {
           </form>
         )}
 
-        {soberAgain < 0 && (
+        {soberAgain >= 0 && formFilled && (
           <div>
             <h2>You are sober!</h2>
             <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">
@@ -133,7 +135,7 @@ const AlcoholUnits = () => {
           </div>
         )}
 
-        {soberAgain >= 0 && (
+        {soberAgain > 0 && (
           <div>
             <h2>Your blood alcohol level is: {bloodAlcoholLevel}!</h2>
             <h2>

@@ -1,0 +1,7 @@
+.logInSignUpLinks {
+  display: flex;
+  flex-direction: column;
+}
+.logInSignUpLinks a {
+  width: 30%;
+}
