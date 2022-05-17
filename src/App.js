@@ -17,8 +17,8 @@ import img from "./images/logo.png";
 function App() {
   const [dropDown, setDropDown] = useState(false);
   const [userName, setUserName] = useState("");
-  const [userRole, setUserRole] = useState([]);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState("");
+  const [loggedIn, setLoggedIn] = useState("");
 
   window.onload = () => {
     let checkLoggedIn = localStorage.getItem("loggedIn");
@@ -85,6 +85,7 @@ function App() {
       localStorage.setItem("userName", data.username);
       localStorage.setItem("loggedIn", true);
       checkAfterHalfAnHour(data.token);
+      localStorage.setItem("token", data.token);
       window.location.reload();
     }
   };
@@ -120,6 +121,7 @@ function App() {
       localStorage.setItem("userName", data.username);
       localStorage.setItem("loggedIn", true);
       checkAfterHalfAnHour(data.token);
+      localStorage.setItem("token", data.token);
       window.location.reload();
     }
   };
@@ -129,6 +131,7 @@ function App() {
     setUserName("");
     setUserRole("");
     localStorage.clear();
+    window.location.reload();
   };
 
   const removeActive = () => {
@@ -205,6 +208,19 @@ function App() {
           >
             Make your own cocktail
           </Link>
+          {userRole !== null &&
+            userRole !== undefined &&
+            userRole.includes("admin") && (
+              <Link
+                to="/seeAllUsers"
+                onClick={(e) => {
+                  removeActive();
+                  addActive(e.target);
+                }}
+              >
+                See all users
+              </Link>
+            )}
         </nav>
       )}
       <Outlet />

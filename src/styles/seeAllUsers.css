@@ -1,0 +1,15 @@
+/* 
+<table>
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>Roles</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{role.roleName}</td>
+        </tr>
+    </tbody>
+</table> 
+*/
