@@ -4,6 +4,7 @@ import { CocktailDB } from "./CocktailDB";
 import { getCocktailByIdAPIUrl } from "../settings";
 import { getCocktailByIdUrl } from "../settings";
 import { useState, useEffect } from "react";
+import "../styles/cocktailRecipe.css";
 
 
 
@@ -53,13 +54,15 @@ if (currentIndex > 10000) {
 
   return (
     
-    <div>
+    <div className="CocktailRecipes">
       {cocktailDB.length != 0? (<div>
-      <li>Picture - placeholder</li>
-      <li>Name: {cocktailAPI.strDrink}</li>
+      <h3>{cocktailAPI.strDrink}</h3>
+      <div className="CocktailRecipes-container">
+        <img alt={cocktailAPI.strDrinkThumb} src={cocktailAPI.strDrinkThumb}></img>
+      </div>
       <li>{cocktailAPI.strAlcoholic}</li>
       <li>Glass: {cocktailAPI.strGlass}</li>
-      <li>Ingredients: {cocktailAPI.strIngredient1} {"  "} {cocktailAPI.strIngredient2} &#160;&#160; {cocktailAPI.strIngredient3} &#160;&#160; {cocktailAPI.strIngredient4} &#160;&#160; {cocktailAPI.strIngredient5} &#160;&#160; {cocktailAPI.strIngredient6}</li>
+      <li>Ingredients: {cocktailAPI.strIngredient1} &#160;&#160; {cocktailAPI.strIngredient2} &#160;&#160; {cocktailAPI.strIngredient3} &#160;&#160; {cocktailAPI.strIngredient4} &#160;&#160; {cocktailAPI.strIngredient5} &#160;&#160; {cocktailAPI.strIngredient6}</li>
       <li>Instructions: {cocktailAPI.strInstructions}</li>  </div>):(<div>hello good sir</div>)}
      {/* <p>tester {currentIndex}</p>
      <p>{cocktailDB.cocktailId}</p> */}
