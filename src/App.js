@@ -10,6 +10,7 @@ import LogOut from "./components/LogOut";
 import { loginUrl, signUpUrl } from "./settings";
 import SignUp from "./components/SignUp";
 import img from "./images/logo.png";
+import ChangeUser from "./components/ChangeUser";
 
 function App() {
   const [dropDown, setDropDown] = useState(false);
@@ -136,6 +137,7 @@ function App() {
       navLinks[i].classList.remove("active");
     }
   };
+
   const addActive = (e) => {
     e.classList.add("active");
   };
@@ -143,7 +145,6 @@ function App() {
   return (
     <div className="App">
       <Header />
-
       {loggedIn ? (
         <WelcomePage name={userName} role={userRole} />
       ) : (
@@ -208,15 +209,26 @@ function App() {
           {userRole !== null &&
             userRole !== undefined &&
             userRole.includes("admin") && (
-              <Link
-                to="/seeAllUsers"
-                onClick={(e) => {
-                  removeActive();
-                  addActive(e.target);
-                }}
-              >
-                See all users
-              </Link>
+              <div>
+                <Link
+                  to="/seeAllUsers"
+                  onClick={(e) => {
+                    removeActive();
+                    addActive(e.target);
+                  }}
+                >
+                  See all users
+                </Link>
+                <Link
+                  to="/changeUser"
+                  onClick={(e) => {
+                    removeActive();
+                    addActive(e.target);
+                  }}
+                >
+                  Change a users role
+                </Link>
+              </div>
             )}
         </nav>
       )}

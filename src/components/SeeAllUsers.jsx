@@ -2,6 +2,7 @@ import React from "react";
 import { seeAllUsersUrl } from "../settings";
 import { useState, useEffect } from "react";
 import "../styles/seeAllUsers.css";
+import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 const SeeAllUsers = () => {
   const [userList, setUserList] = useState([]);
@@ -40,45 +41,55 @@ const SeeAllUsers = () => {
     return data;
   };
 
-  return (
-    <div>
-      {error ? (
-        <table>
-          <thead>
-            <tr>
-              <th>User name</th>
-              <th colSpan="2">Roles</th>
-            </tr>
-          </thead>
+  const styles = {
+    bgElement: {
+      backgroundImage: `url(${backgroundimg})`,
+      padding: "5%",
+    },
 
-          <tbody>
-            {userList.map((user, index) => {
-              return (
-                <tr key={index}>
-                  <td
-                    onClick={(e) => {
-                      console.log(e);
-                      //later use this for changing status
-                    }}
-                  >
-                    {user.userName}
-                  </td>
-                  {user.roleList.map((role, index) => {
-                    if (user.roleList.length === 1) {
-                      return (
-                        <td colSpan="2" key={index}>
-                          {role.roleName}
-                        </td>
-                      );
-                    } else {
-                      return <td key={index}>{role.roleName}</td>;
-                    }
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+    content: {
+      backgroundColor: "rgba(255, 255, 255, 0.5)",
+    },
+  };
+
+  return (
+    <div style={styles.bgElement}>
+      {error ? (
+        <div style={styles.content}>
+          <table>
+            <thead>
+              <tr>
+                <th>User name</th>
+                <th colSpan="2">Roles</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {userList.map((user, index) => {
+                return (
+                  <tr key={index}>
+                    <td>
+                      <a href={`/changeUser/${user.userName}`}>
+                        {user.userName}
+                      </a>
+                    </td>
+                    {user.roleList.map((role, index) => {
+                      if (user.roleList.length === 1) {
+                        return (
+                          <td colSpan="2" key={index}>
+                            {role.roleName}
+                          </td>
+                        );
+                      } else {
+                        return <td key={index}>{role.roleName}</td>;
+                      }
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <h2>You do not have access to this page</h2>
       )}
