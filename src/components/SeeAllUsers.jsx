@@ -55,7 +55,14 @@ const SeeAllUsers = () => {
             {userList.map((user, index) => {
               return (
                 <tr key={index}>
-                  <td>{user.userName}</td>
+                  <td
+                    onClick={(e) => {
+                      console.log(e);
+                      //later use this for changing status
+                    }}
+                  >
+                    {user.userName}
+                  </td>
                   {user.roleList.map((role, index) => {
                     if (user.roleList.length === 1) {
                       return (
