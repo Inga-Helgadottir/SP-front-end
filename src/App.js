@@ -5,12 +5,9 @@ import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import { Outlet, Link } from "react-router-dom";
 import WelcomePage from "./components/WelcomePage";
-import Categories from "./components/Categories";
 import Header from "./components/Header";
 import LogOut from "./components/LogOut";
 import { loginUrl, signUpUrl } from "./settings";
-import { Cocktails } from "./components/Cocktails";
-import MakeCocktail from "./components/MakeCocktails";
 import SignUp from "./components/SignUp";
 import img from "./images/logo.png";
 
@@ -20,7 +17,7 @@ function App() {
   const [userRole, setUserRole] = useState("");
   const [loggedIn, setLoggedIn] = useState("");
 
-  window.onload = () => {
+  useEffect(() => {
     let checkLoggedIn = localStorage.getItem("loggedIn");
     if (checkLoggedIn !== null || checkLoggedIn !== undefined) {
       let userNameLS = localStorage.getItem("userName");
@@ -31,7 +28,7 @@ function App() {
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
     }
-  };
+  });
 
   function checkAfterHalfAnHour(token) {
     setTimeout(function () {
@@ -87,6 +84,10 @@ function App() {
       checkAfterHalfAnHour(data.token);
       localStorage.setItem("token", data.token);
       window.location.reload();
+      console.log("----------------------");
+      console.log(localStorage.getItem("userName"));
+      console.log(localStorage.getItem("loggedIn"));
+      console.log(JSON.parse(localStorage.getItem("userRole")));
     }
   };
 
@@ -208,6 +209,7 @@ function App() {
           >
             Make your own cocktail
           </Link>
+
           {userRole !== null &&
             userRole !== undefined &&
             userRole.includes("admin") && (

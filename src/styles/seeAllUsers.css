@@ -1,15 +1,28 @@
-/* 
-<table>
-    <thead>
-        <tr>
-            <th>User name</th>
-            <th>Roles</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{role.roleName}</td>
-        </tr>
-    </tbody>
-</table> 
-*/
+table {
+  width: 90%;
+  margin: 5% auto;
+  border-collapse: collapse;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: 20px;
+}
+tr th {
+  background-color: #9c99de;
+}
+table,
+th,
+td {
+  border: 2px solid;
+}
+tr td {
+  text-align: start;
+  padding-left: 2%;
+}
+tr:nth-child(even) {
+  background-color: #c99de3;
+}
+tr:nth-child(odd) {
+  background-color: #de99c6;
+}
+tr:hover {
+  background-color: #9fe3af;
+}

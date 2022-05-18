@@ -6,6 +6,7 @@ Change a users role
 
 Front-end:
 See a cocktail recipe
+fix error (seeAllUsers log out)
 
 Other:
 Outsourcing
