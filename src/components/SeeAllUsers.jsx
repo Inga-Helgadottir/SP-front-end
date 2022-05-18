@@ -8,8 +8,10 @@ const SeeAllUsers = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    let error = localStorage.getItem("error");
-    setError(error);
+    if (error !== null || error !== undefined) {
+      let error = localStorage.getItem("error");
+      setError(error);
+    }
 
     const getUsers = async () => {
       const fromAPI = await getUserList();
@@ -37,8 +39,6 @@ const SeeAllUsers = () => {
     }
     return data;
   };
-
-  console.log(error);
 
   return (
     <div>

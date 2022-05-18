@@ -18,8 +18,7 @@ function App() {
   const [loggedIn, setLoggedIn] = useState("");
 
   useEffect(() => {
-    let checkLoggedIn = localStorage.getItem("loggedIn");
-    if (checkLoggedIn !== null || checkLoggedIn !== undefined) {
+    if (loggedIn === "") {
       let userNameLS = localStorage.getItem("userName");
       let loggedInLS = localStorage.getItem("loggedIn");
       let userRoleLS = JSON.parse(localStorage.getItem("userRole"));
@@ -84,10 +83,6 @@ function App() {
       checkAfterHalfAnHour(data.token);
       localStorage.setItem("token", data.token);
       window.location.reload();
-      console.log("----------------------");
-      console.log(localStorage.getItem("userName"));
-      console.log(localStorage.getItem("loggedIn"));
-      console.log(JSON.parse(localStorage.getItem("userRole")));
     }
   };
 
