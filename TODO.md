@@ -1,12 +1,9 @@
 
 Back-end and front-end:
-See all users
-Change a users role
 ??? Sort cocktails
 
 Front-end:
 See a cocktail recipe
-fix error (seeAllUsers log out)
 
 Other:
 Outsourcing
