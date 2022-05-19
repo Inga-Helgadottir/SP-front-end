@@ -12,7 +12,6 @@ export const seeAllUsersUrl =
   "http://localhost:8080/SP_back_end_war_exploded/api/info/users";
 export const changeUserRoleUrl =
   "http://localhost:8080/SP_back_end_war_exploded/api/info/users/changeUserRole";
-
 export const getCocktailByIdAPIUrl =
   "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/API/";
 export const getCocktailByIdUrl =

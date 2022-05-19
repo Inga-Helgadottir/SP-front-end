@@ -10,6 +10,15 @@ li {
 }
 
 .CocktailRecipes-container img {
-  width: auto;
-  height: 300px;
+  width: 90%;
+  height: auto;
+}
+.ingredientLi {
+  list-style-position: inside;
+}
+.CocktailRecipes h3 {
+  font-size: 30px;
+}
+.CocktailRecipes li {
+  font-size: 21px;
 }

@@ -4,73 +4,108 @@ import { CocktailDB } from "./CocktailDB";
 import { getCocktailByIdAPIUrl } from "../settings";
 import { getCocktailByIdUrl } from "../settings";
 import { useState, useEffect } from "react";
+import beerGlass from "../images/beerGlass.png";
+import cocktailGlass from "../images/cocktailGlass.jpg";
+import cocktailGlass2 from "../images/cocktailGlass2.png";
+import martiniGlass from "../images/martiniGlass.jpg";
+import normalGlass from "../images/normalGlass.jpg";
+import normalShortGlass from "../images/normalShortGlass.jpg";
+import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
 import "../styles/cocktailRecipe.css";
+import backgroundimg from "../images/CocktailsBackground.jpeg";
 
 export const CocktailRecipe = () => {
   const [cocktailAPI, setCocktailAPI] = useState([]);
   const [cocktailDB, setCocktailDB] = useState([]);
-
-  useEffect(() => {
-    const getCocktail = async () => {
-      const fromAPI = await getCocktailByIdAPI();
-      setCocktailAPI(fromAPI);
-    };
-    getCocktail();
-
-    const getCocktailDB = async () => {
-      const fromDB = await getCocktailById();
-      setCocktailDB(fromDB);
-    };
-    getCocktailDB();
-  }, []);
+  const [ingredients, setIngredients] = useState([]);
+  const [imageOptions, setImageOptions] = useState([
+    beerGlass,
+    cocktailGlass,
+    cocktailGlass2,
+    martiniGlass,
+    normalGlass,
+    normalShortGlass,
+    tallSkinnyGlass,
+  ]);
 
   let currentUrl = window.location.href;
   let urlArray = currentUrl.split("/");
   const currentIndex = urlArray[urlArray.length - 1];
 
+  useEffect(() => {
+    if (currentIndex > 1000) {
+      console.log("hererererer1111111111111");
+      const getCocktail = async () => {
+        const fromAPI = await getCocktailByIdAPI();
+        setCocktailAPI(fromAPI);
+      };
+      getCocktail();
+    } else {
+      console.log("hererererer22222222222222");
+      const getCocktailDB = async () => {
+        const fromDB = await getCocktailById();
+        setCocktailDB(fromDB);
+      };
+      getCocktailDB();
+    }
+  }, []);
+
   const getCocktailByIdAPI = async () => {
     const res = await fetch(getCocktailByIdAPIUrl + currentIndex);
     const data = await res.json();
-    console.log(data.drinks);
-    console.log("_______________________");
-    console.log(data.drinks[0].idDrink);
-    // Get the first drink.
-    // var drink = data.drinks[0];
+    var drink = data.drinks[0];
 
-    // let index = 1;
-    // let ingredientArray = [];
-    // while (drink["strIngredient" + index]) {
-    //   ingredientArray.push({
-    //     name: drink["strIngredient" + index],
-    //     amount: drink["strMeasure" + index]
-    //       ? drink["strMeasure" + index]
-    //       : "A dash ",
-    //   });
-    //   index++;
-    // }
-    // console.log("Ingredients: ");
-    // ingredientArray.forEach((ingredient) => {
-    //   console.log(`${ingredient.amount} of ${ingredient.name}`);
-    // });
+    let index = 1;
+    let ingredientArray = [];
+    while (drink["strIngredient" + index]) {
+      ingredientArray.push({
+        key: index,
+        name: drink["strIngredient" + index],
+        amount: drink["strMeasure" + index]
+          ? drink["strMeasure" + index]
+          : "A dash ",
+      });
+      index++;
+    }
+    setIngredients(ingredientArray);
     return data.drinks[0];
   };
 
   const getCocktailById = async () => {
     const res = await fetch(getCocktailByIdUrl + currentIndex);
     const data = await res.json();
+    console.log("data");
     console.log(data);
     return data;
   };
-  if (currentIndex > 10000) {
-    getCocktailByIdAPI();
-  } else {
-    getCocktailById();
-  }
+
+  const checkImgIndex = imageOptions.filter((img, index) => {
+    if (cocktailDB.image != null || cocktailDB.image != undefined) {
+      let afterSplit = cocktailDB.image.split(".");
+      let afterSplitImg = img.split(".");
+      if (afterSplitImg[0] === afterSplit[0]) {
+        return img;
+      }
+    }
+  });
+
+  const styles = {
+    bgElement: {
+      backgroundImage: `url(${backgroundimg})`,
+    },
+
+    content: {
+      backgroundColor: "rgba(255, 255, 255, 1)",
+      padding: "0 6%",
+      width: "50%",
+      margin: "0 auto",
+    },
+  };
 
   return (
-    <div className="CocktailRecipes">
-      {cocktailDB.length != 0 ? (
-        <div>
+    <div className="CocktailRecipes" style={styles.bgElement}>
+      {cocktailDB.length === 0 ? (
+        <div style={styles.content}>
           <h3>{cocktailAPI.strDrink}</h3>
           <div className="CocktailRecipes-container">
             <img
@@ -78,23 +113,39 @@ export const CocktailRecipe = () => {
               src={cocktailAPI.strDrinkThumb}
             ></img>
           </div>
+          <li>Ingredients:</li>
+          {ingredients.length > 1 &&
+            ingredients.map((ingredient, index) => {
+              return (
+                <li className="ingredientLi" key={index}>
+                  {ingredient.amount} {ingredient.name}
+                </li>
+              );
+            })}
           <li>{cocktailAPI.strAlcoholic}</li>
           <li>Glass: {cocktailAPI.strGlass}</li>
-          <li>
-            Ingredients: {cocktailAPI.strIngredient1} &#160;&#160;{" "}
-            {cocktailAPI.strIngredient2} &#160;&#160;{" "}
-            {cocktailAPI.strIngredient3} &#160;&#160;{" "}
-            {cocktailAPI.strIngredient4} &#160;&#160;{" "}
-            {cocktailAPI.strIngredient5} &#160;&#160;{" "}
-            {cocktailAPI.strIngredient6}
-          </li>
           <li>Instructions: {cocktailAPI.strInstructions}</li>{" "}
         </div>
       ) : (
-        <div>hello good sir</div>
+        <div style={styles.content}>
+          <h3>{cocktailDB.name}</h3>
+          <div className="CocktailRecipes-container">
+            <img alt={cocktailDB.imageAlt} src={checkImgIndex}></img>
+          </div>
+          <li>Ingredients:</li>
+          {cocktailDB.measurementsIngredients.length > 1 &&
+            cocktailDB.measurementsIngredients.map((ingredient, index) => {
+              return (
+                <li className="ingredientLi" key={index}>
+                  {ingredient.measurementIngredient}
+                </li>
+              );
+            })}
+          <li>{cocktailDB.alcoholic}</li>
+          <li>Glass: {cocktailDB.glass}</li>
+          <li>Instructions: {cocktailDB.instructions}</li>{" "}
+        </div>
       )}
-      {/* <p>tester {currentIndex}</p>
-     <p>{cocktailDB.cocktailId}</p> */}
     </div>
   );
 };
