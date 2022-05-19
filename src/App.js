@@ -26,6 +26,14 @@ function App() {
       setUserName(userNameLS);
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
+      // let tokenLS = localStorage.getItem("token");
+      // if (
+      //   tokenLS === undefined ||
+      //   tokenLS === null ||
+      //   !isTokenExpired(tokenLS)
+      // ) {
+      //   localStorage.clear();
+      // }
     }
   });
 
