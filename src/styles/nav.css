@@ -1,10 +1,11 @@
 nav {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   border: solid 2px black;
   padding: 5px;
   background-color: white;
-  flex-wrap: wrap;
+  flex-wrap: inherit;
 }
 nav a {
   color: black;

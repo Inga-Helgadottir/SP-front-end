@@ -80,12 +80,18 @@ const AlcoholUnits = () => {
                 className="radioBtns"
                 onChange={(e) => setGender(e.target.value)}
               >
-                <input type="radio" value="Male" name="gender" />
-                <label>Male,</label>
-                <input type="radio" value="Female" name="gender" />
-                <label>Female,</label>
-                <input type="radio" value="Other" name="gender" />
-                <label>Other</label>
+                <div className="radioOption">
+                  <input type="radio" value="Male" name="gender" />
+                  <label>Male</label>
+                </div>
+                <div className="radioOption">
+                  <input type="radio" value="Female" name="gender" />
+                  <label>Female</label>
+                </div>
+                <div className="radioOption">
+                  <input type="radio" value="Other" name="gender" />
+                  <label>Other</label>
+                </div>
               </div>
             </div>
 

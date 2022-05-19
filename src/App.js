@@ -9,8 +9,7 @@ import Header from "./components/Header";
 import LogOut from "./components/LogOut";
 import { loginUrl, signUpUrl } from "./settings";
 import SignUp from "./components/SignUp";
-import img from "./images/logo.png";
-import ChangeUser from "./components/ChangeUser";
+import img from "./images/logowhite.png";
 
 function App() {
   const [dropDown, setDropDown] = useState(false);
@@ -145,6 +144,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+
       {loggedIn ? (
         <WelcomePage name={userName} role={userRole} />
       ) : (
@@ -218,15 +218,6 @@ function App() {
                   }}
                 >
                   See all users
-                </Link>
-                <Link
-                  to="/changeUser"
-                  onClick={(e) => {
-                    removeActive();
-                    addActive(e.target);
-                  }}
-                >
-                  Change a users role
                 </Link>
               </div>
             )}

@@ -1,4 +1,3 @@
-
 Back-end and front-end:
 ??? Sort cocktails
 
@@ -27,7 +26,6 @@ Make cocktail
 
 Need to fix:
 Header
-Nav bar
 Alcohol units (gender)
 Welcome page
 
