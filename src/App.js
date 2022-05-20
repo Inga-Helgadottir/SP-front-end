@@ -13,7 +13,6 @@ import img from "./images/logowhite.png";
 
 function App() {
   const [dropDown, setDropDown] = useState(false);
-  const [testing, setTesting] = useState(false);
   const [callLinkCheck, setCallLinkCheck] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
