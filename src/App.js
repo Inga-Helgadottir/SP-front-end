@@ -50,6 +50,11 @@ function App() {
       currentIndex = "seeAllUsers";
     }
 
+    if (currentIndex.includes("#")) {
+      let indexArray = currentIndex.split("#");
+      currentIndex = indexArray[0];
+    }
+
     switch (currentIndex) {
       case "":
         removeActive();
