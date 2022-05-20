@@ -14,6 +14,7 @@ import img from "./images/logowhite.png";
 function App() {
   const [dropDown, setDropDown] = useState(false);
   const [testing, setTesting] = useState(false);
+  const [callLinkCheck, setCallLinkCheck] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
   const [loggedIn, setLoggedIn] = useState("");
@@ -28,12 +29,12 @@ function App() {
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
     }
-    if (testing) {
-      test();
+    if (callLinkCheck) {
+      checkCurrentLink();
     }
   });
 
-  const test = () => {
+  const checkCurrentLink = () => {
     let currentUrl = window.location.href;
     let urlArray = currentUrl.split("/");
     let currentIndex = urlArray[urlArray.length - 1];
@@ -215,7 +216,7 @@ function App() {
           className="dropDownIcon"
           onClick={(e) => {
             setDropDown(!dropDown);
-            setTesting(!testing);
+            setCallLinkCheck(!callLinkCheck);
           }}
         />
       )}
