@@ -13,6 +13,7 @@ import img from "./images/logowhite.png";
 
 function App() {
   const [dropDown, setDropDown] = useState(false);
+  const [testing, setTesting] = useState(false);
   const [userName, setUserName] = useState("");
   const [userRole, setUserRole] = useState("");
   const [loggedIn, setLoggedIn] = useState("");
@@ -27,8 +28,64 @@ function App() {
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
     }
+    if (testing) {
+      test();
+    }
   });
 
+  const test = () => {
+    let currentUrl = window.location.href;
+    let urlArray = currentUrl.split("/");
+    let currentIndex = urlArray[urlArray.length - 1];
+    let link = document.querySelectorAll(".links");
+
+    if (!isNaN(currentIndex)) {
+      if (urlArray[urlArray.length - 2] === "seeAllUsers") {
+        currentIndex = "seeAllUsers";
+      } else if (urlArray[urlArray.length - 2] === "seeCocktail") {
+        currentIndex = "seeCocktails";
+      }
+    } else if (urlArray[urlArray.length - 2] === "changeUser") {
+      currentIndex = "seeAllUsers";
+    }
+
+    switch (currentIndex) {
+      case "":
+        removeActive();
+        addActive(link[0]);
+        break;
+
+      case "seeCocktails":
+        removeActive();
+        addActive(link[1]);
+        break;
+
+      case "alcoholUnits":
+        removeActive();
+        addActive(link[2]);
+        break;
+
+      case "makeCocktail":
+        removeActive();
+        addActive(link[3]);
+        break;
+
+      case "seeAllUsers":
+        removeActive();
+        addActive(link[4]);
+        break;
+
+      case "changeUser":
+        removeActive();
+        addActive(link[4]);
+        break;
+
+      default:
+        removeActive();
+        addActive(link[0]);
+        break;
+    }
+  };
   function checkAfterHalfAnHour(token) {
     setTimeout(function () {
       if (isTokenExpired(token)) {
@@ -138,7 +195,9 @@ function App() {
   };
 
   const addActive = (e) => {
-    e.classList.add("active");
+    if (e !== null && e !== undefined) {
+      e.classList.add("active");
+    }
   };
 
   return (
@@ -156,6 +215,7 @@ function App() {
           className="dropDownIcon"
           onClick={(e) => {
             setDropDown(!dropDown);
+            setTesting(!testing);
           }}
         />
       )}
@@ -169,7 +229,7 @@ function App() {
             }}
           />
           <Link
-            className="active"
+            className="active links"
             onClick={(e) => {
               removeActive();
               addActive(e.target);
@@ -179,6 +239,7 @@ function App() {
             Home
           </Link>
           <Link
+            className="links"
             to="/seeCocktails"
             onClick={(e) => {
               removeActive();
@@ -188,6 +249,7 @@ function App() {
             See all cocktails
           </Link>
           <Link
+            className="links"
             to="/alcoholUnits"
             onClick={(e) => {
               removeActive();
@@ -197,6 +259,7 @@ function App() {
             Calculate alcohol units
           </Link>
           <Link
+            className="links"
             to="/makeCocktail"
             onClick={(e) => {
               removeActive();
@@ -210,6 +273,7 @@ function App() {
             userRole !== undefined &&
             userRole.includes("admin") && (
               <Link
+                className="links"
                 to="/seeAllUsers"
                 onClick={(e) => {
                   removeActive();
