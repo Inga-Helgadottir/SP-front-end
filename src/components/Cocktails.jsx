@@ -61,7 +61,9 @@ export const Cocktails = () => {
               return <Cocktail key={index} props={element} />;
             })}
         </div>
-        <h2 style={{ marginTop: "15px" }}>Cocktails made by our users</h2>
+        {cocktailsListDB.length > 0 && (
+          <h2 style={{ marginTop: "15px" }}>Cocktails made by our users</h2>
+        )}
         <div className="Cocktails">
           {cocktailsListDB.length > 0 &&
             cocktailsListDB.map((cocktail, index) => {
