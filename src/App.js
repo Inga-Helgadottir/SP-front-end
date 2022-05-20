@@ -28,6 +28,7 @@ function App() {
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
     }
+
     if (callLinkCheck) {
       checkCurrentLink();
     }
@@ -86,6 +87,7 @@ function App() {
         break;
     }
   };
+
   function checkAfterHalfAnHour(token) {
     setTimeout(function () {
       if (isTokenExpired(token)) {
@@ -183,8 +185,9 @@ function App() {
     setLoggedIn(false);
     setUserName("");
     setUserRole("");
+    setCallLinkCheck(false);
     localStorage.clear();
-    window.location.reload();
+    window.location.href = "/";
   };
 
   const removeActive = () => {
