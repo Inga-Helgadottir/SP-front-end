@@ -132,7 +132,7 @@ const AlcoholUnits = () => {
           </form>
         )}
 
-        {soberAgain >= 0 && formFilled && (
+        {soberAgain <= 0 && formFilled && (
           <div>
             <h2>You are sober!</h2>
             <a className="btn alcoholUnitsBackLink" href="/alcoholUnits">

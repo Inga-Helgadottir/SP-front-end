@@ -26,14 +26,6 @@ function App() {
       setUserName(userNameLS);
       setLoggedIn(loggedInLS);
       setUserRole(userRoleLS);
-      // let tokenLS = localStorage.getItem("token");
-      // if (
-      //   tokenLS === undefined ||
-      //   tokenLS === null ||
-      //   !isTokenExpired(tokenLS)
-      // ) {
-      //   localStorage.clear();
-      // }
     }
   });
 
@@ -217,17 +209,15 @@ function App() {
           {userRole !== null &&
             userRole !== undefined &&
             userRole.includes("admin") && (
-              <div>
-                <Link
-                  to="/seeAllUsers"
-                  onClick={(e) => {
-                    removeActive();
-                    addActive(e.target);
-                  }}
-                >
-                  See all users
-                </Link>
-              </div>
+              <Link
+                to="/seeAllUsers"
+                onClick={(e) => {
+                  removeActive();
+                  addActive(e.target);
+                }}
+              >
+                See all users
+              </Link>
             )}
         </nav>
       )}
