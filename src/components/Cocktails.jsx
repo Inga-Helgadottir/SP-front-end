@@ -5,6 +5,7 @@ import { cocktalLetterUrl, allCocktailsDB } from "../settings";
 import "../styles/cocktails.css";
 import { CocktailDB } from "./CocktailDB";
 import backgroundimg from "../images/CocktailsBackground.jpeg";
+import LoadingIcons from "react-loading-icons";
 
 export const Cocktails = () => {
   const [cocktailsList, setCocktailsList] = useState([]);
@@ -25,14 +26,18 @@ export const Cocktails = () => {
   }, []);
 
   const getCocktailList = async (letter) => {
+    document.querySelector(".loading").style.display = "block";
     const res = await fetch(cocktalLetterUrl + letter);
     const data = await res.json();
+    document.querySelector(".loading").style.display = "none";
     return data.drinks;
   };
 
   const getCocktailListDB = async () => {
+    document.querySelector(".loading").style.display = "block";
     const res = await fetch(allCocktailsDB);
     const data = await res.json();
+    document.querySelector(".loading").style.display = "none";
     return data;
   };
 
@@ -48,6 +53,7 @@ export const Cocktails = () => {
 
   return (
     <div className="allCocktails" style={styles.bgElement}>
+      <LoadingIcons.ThreeDots className="loading" />
       <div style={styles.content}>
         <div className="Cocktails">
           {cocktailsList.length > 0 &&

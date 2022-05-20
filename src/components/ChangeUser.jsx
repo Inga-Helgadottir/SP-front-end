@@ -3,6 +3,7 @@ import { changeUserRoleUrl } from "../settings";
 import { useState, useEffect } from "react";
 import backgroundimg from "../images/CocktailsBackground.jpeg";
 import "../styles/changeUser.css";
+import LoadingIcons from "react-loading-icons";
 
 const ChangeUser = () => {
   const [userName, setUserName] = useState("");
@@ -23,6 +24,7 @@ const ChangeUser = () => {
   }, []);
 
   const changeUserRole = async (jsonContext) => {
+    document.querySelector(".loading").style.display = "block";
     let token = localStorage.getItem("token");
     const res = await fetch(changeUserRoleUrl, {
       method: "POST",
@@ -38,6 +40,7 @@ const ChangeUser = () => {
     } else {
       alert("You have changed this users role");
     }
+    document.querySelector(".loading").style.display = "none";
     return data;
   };
 
@@ -66,6 +69,7 @@ const ChangeUser = () => {
 
   return (
     <div>
+      <LoadingIcons.ThreeDots className="loading" />
       {error ? (
         <div style={styles.bgElement}>
           <div style={styles.content}>

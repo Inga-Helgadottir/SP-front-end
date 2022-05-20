@@ -3,6 +3,7 @@ import { seeAllUsersUrl } from "../settings";
 import { useState, useEffect } from "react";
 import "../styles/seeAllUsers.css";
 import backgroundimg from "../images/CocktailsBackground.jpeg";
+import LoadingIcons from "react-loading-icons";
 
 const SeeAllUsers = () => {
   const [userList, setUserList] = useState([]);
@@ -22,6 +23,7 @@ const SeeAllUsers = () => {
   }, []);
 
   const getUserList = async () => {
+    document.querySelector(".loading").style.display = "block";
     let token = localStorage.getItem("token");
     const res = await fetch(seeAllUsersUrl, {
       method: "GET",
@@ -38,6 +40,7 @@ const SeeAllUsers = () => {
       setError(true);
       localStorage.setItem("error", true);
     }
+    document.querySelector(".loading").style.display = "none";
     return data;
   };
 
@@ -54,6 +57,7 @@ const SeeAllUsers = () => {
 
   return (
     <div style={styles.bgElement}>
+      <LoadingIcons.ThreeDots className="loading" />
       {error ? (
         <div style={styles.content}>
           <table>

@@ -3,7 +3,7 @@ import "../styles/welcomePage.css";
 
 const WelcomePage = ({ name, role }) => {
   return (
-    <div style={{ marginBottom: "20px" }}>
+    <div style={{ marginBottom: "20px", marginTop: "2%" }}>
       {name === "null" ? (
         <div>
           <h2>Welcome!</h2>

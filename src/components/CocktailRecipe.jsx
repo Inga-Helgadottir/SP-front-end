@@ -13,6 +13,7 @@ import normalShortGlass from "../images/normalShortGlass.jpg";
 import tallSkinnyGlass from "../images/tallSkinnyGlass.jpg";
 import "../styles/cocktailRecipe.css";
 import backgroundimg from "../images/CocktailsBackground.jpeg";
+import LoadingIcons from "react-loading-icons";
 
 export const CocktailRecipe = () => {
   const [cocktailAPI, setCocktailAPI] = useState([]);
@@ -34,14 +35,12 @@ export const CocktailRecipe = () => {
 
   useEffect(() => {
     if (currentIndex > 1000) {
-      console.log("hererererer1111111111111");
       const getCocktail = async () => {
         const fromAPI = await getCocktailByIdAPI();
         setCocktailAPI(fromAPI);
       };
       getCocktail();
     } else {
-      console.log("hererererer22222222222222");
       const getCocktailDB = async () => {
         const fromDB = await getCocktailById();
         setCocktailDB(fromDB);
@@ -51,6 +50,7 @@ export const CocktailRecipe = () => {
   }, []);
 
   const getCocktailByIdAPI = async () => {
+    document.querySelector(".loading").style.display = "block";
     const res = await fetch(getCocktailByIdAPIUrl + currentIndex);
     const data = await res.json();
     var drink = data.drinks[0];
@@ -68,14 +68,15 @@ export const CocktailRecipe = () => {
       index++;
     }
     setIngredients(ingredientArray);
+    document.querySelector(".loading").style.display = "none";
     return data.drinks[0];
   };
 
   const getCocktailById = async () => {
+    document.querySelector(".loading").style.display = "block";
     const res = await fetch(getCocktailByIdUrl + currentIndex);
     const data = await res.json();
-    console.log("data");
-    console.log(data);
+    document.querySelector(".loading").style.display = "none";
     return data;
   };
 
@@ -98,12 +99,13 @@ export const CocktailRecipe = () => {
       backgroundColor: "rgba(255, 255, 255, 1)",
       padding: "0 6%",
       width: "50%",
-      margin: "0 auto",
+      margin: "22px auto",
     },
   };
 
   return (
     <div className="CocktailRecipes" style={styles.bgElement}>
+      <LoadingIcons.ThreeDots className="loading" />
       {cocktailDB.length === 0 ? (
         <div style={styles.content}>
           <h3>{cocktailAPI.strDrink}</h3>
