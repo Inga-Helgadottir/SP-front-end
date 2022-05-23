@@ -22,3 +22,28 @@ tell the guy that
 -we don't care if it looks bad 
 
 get code up and running for everyone 
+
+-------------------------------------------------------------
+Testing everything check list:
+
+after every step check links green
+
+log in as user
+
+log in as admin
+
+see all cocktials
+
+see a cocktail
+
+alcohol units drunk and sober
+
+make a cocktail - check DB
+
+see all users
+
+change a user - check DB
+
+sign up - check DB
+
+log out
