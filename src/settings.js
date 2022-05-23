@@ -1,18 +1,24 @@
-export const loginUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/login";
-export const signUpUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/signup";
+export const loginUrl = "https://test.singah.dk/SP/api/login";
+// "http://localhost:8080/SP_back_end_war_exploded/api/login";
+export const signUpUrl = "https://test.singah.dk/SP/api/signup";
+// "http://localhost:8080/SP_back_end_war_exploded/api/signup";
 export const cocktalLetterUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/letter/";
+  "https://test.singah.dk/SP/api/info/cocktails/letter/";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/letter/";
 export const allCocktailsDB =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/all";
+  "https://test.singah.dk/SP/api/info/cocktails/all";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/all";
 export const makeCocktailUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/add";
-export const seeAllUsersUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/users";
+  "https://test.singah.dk/SP/api/info/cocktails/add";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/add";
+export const seeAllUsersUrl = "https://test.singah.dk/SP/api/info/users";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/users";
 export const changeUserRoleUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/users/changeUserRole";
+  "https://test.singah.dk/SP/api/info/users/changeUserRole";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/users/changeUserRole";
 export const getCocktailByIdAPIUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/API/";
+  "https://test.singah.dk/SP/api/info/cocktails/API/";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/API/";
 export const getCocktailByIdUrl =
-  "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/";
+  "https://test.singah.dk/SP/api/info/cocktails/";
+// "http://localhost:8080/SP_back_end_war_exploded/api/info/cocktails/";
